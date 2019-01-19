@@ -14,7 +14,7 @@ export class RequirementService {
   ) {}
 
   GetByProject(project_id: string): Observable<Requirement[]> {
-    return this.http.get(Config.API_URL + 'projects/requirements/' + project_id)
+    return this.http.get(Config.API_URL + 'requirements/' + project_id)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
