@@ -42,8 +42,12 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'requirements'">
-      <ion-item ion-item>
-        Requirements
+      <ion-item ion-item *ngIf="requirements.length == 0">
+        No Requirements
+      </ion-item>
+
+      <ion-item ion-item text-wrap *ngFor="let requirement of requirements">
+        <h2>{{ requirement.title }}</h2>
       </ion-item>
     </ion-list>
   </div>

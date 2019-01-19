@@ -13,6 +13,7 @@ import { ProjectPage } from '../pages/projects/project';
 
 import { ProjectService } from '../services/project';
 import { CategoryService } from '../services/category';
+import { RequirementService } from '../services/requirement';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CategoryService } from '../services/category';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProjectService,
-    CategoryService
+    CategoryService,
+    RequirementService
   ]
 })
 export class AppModule {}
