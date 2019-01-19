@@ -15,8 +15,8 @@
       <ion-segment-button value="categories">
         Categories
       </ion-segment-button>
-      <ion-segment-button value="entities">
-        Entities
+      <ion-segment-button value="requirements">
+        Requirements
       </ion-segment-button>
     </ion-segment>
   </div>
@@ -31,14 +31,19 @@
     </ion-list>
   
     <ion-list *ngSwitchCase="'categories'">
-      <ion-item ion-item>
-        Categories
+      <ion-item ion-item *ngIf="categories.length == 0">
+        No categories
+      </ion-item>
+
+      <ion-item ion-item text-wrap *ngFor="let category of categories">
+        <h2>{{ category.name }}</h2>
+        <p>Confidence: {{ category.confidence }}</p>
       </ion-item>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'entities'">
+    <ion-list *ngSwitchCase="'requirements'">
       <ion-item ion-item>
-        Entities
+        Requirements
       </ion-item>
     </ion-list>
   </div>

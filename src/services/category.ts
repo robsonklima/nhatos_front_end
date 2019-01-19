@@ -4,17 +4,17 @@ import 'rxjs/Rx';
 
 import { Config } from './../config/config';
 import { Observable } from "rxjs/Observable";
-import { Project } from "../models/project";
+import { Category } from "../models/category";
 
 @Injectable()
-export class ProjectService {
+export class CategoryService {
   
   constructor(
     private http: Http
   ) {}
 
-  getAll(): Observable<Project[]> {
-    return this.http.get(Config.API_URL + 'projects')
+  GetByProject(project_id: string): Observable<Category[]> {
+    return this.http.get(Config.API_URL + 'projects/categories/' + project_id)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
