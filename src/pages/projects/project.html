@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Project
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div padding>
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button value="info">
+        Info
+      </ion-segment-button>
+      <ion-segment-button value="categories">
+        Categories
+      </ion-segment-button>
+      <ion-segment-button value="entities">
+        Entities
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  
+  <div [ngSwitch]="segment">
+    <ion-list *ngSwitchCase="'info'">
+      <ion-item text-wrap text-justify>
+        <h2>{{ project.name }}</h2>
+        <br />
+        <p>{{ project.description }}</p>
+      </ion-item>
+    </ion-list>
+  
+    <ion-list *ngSwitchCase="'categories'">
+      <ion-item ion-item>
+        Categories
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'entities'">
+      <ion-item ion-item>
+        Entities
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

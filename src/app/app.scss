@@ -1,0 +1,44 @@
+ion-list, ion-grid {
+  margin-top: 4px !important;
+  margin-bottom: 0px !important;
+}
+
+ion-searchbar {
+  margin-top: 4px !important;
+  margin-bottom: 3px !important;
+}
+
+.silver-bg {
+  background-color: #F4F4F7;
+}
+
+.grid-basic-page {
+  ion-grid {
+    background-color: white;
+  }
+
+  ion-col div {
+    /*background-color: #f0f5ff;
+    border: 1px solid #e6e9ee;*/
+    border-radius: 2px;
+    padding: 5px;
+    text-align: center;
+  }
+
+  p {
+    padding: 10px 0 0 10px !important;
+    margin: 0;
+  }
+}
+
+ion-list .radio-group {
+  border: 0px !important;
+}
+
+.cards-bg {
+  background-color: #F4F4F7;
+}
+
+ion-card-title {
+  font-size: 13pt !important;
+}
