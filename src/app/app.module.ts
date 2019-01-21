@@ -10,17 +10,20 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ProjectsPage } from '../pages/projects/projects';
 import { ProjectPage } from '../pages/projects/project';
+import { RequirementPage } from '../pages/requirements/requirement';
 
 import { ProjectService } from '../services/project';
 import { CategoryService } from '../services/category';
 import { RequirementService } from '../services/requirement';
+import { RecommendationService } from '../services/recommendation';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ProjectsPage,
-    ProjectPage
+    ProjectPage,
+    RequirementPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { RequirementService } from '../services/requirement';
     MyApp,
     HomePage,
     ProjectsPage,
-    ProjectPage
+    ProjectPage,
+    RequirementPage
   ],
   providers: [
     StatusBar,
@@ -40,7 +44,8 @@ import { RequirementService } from '../services/requirement';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProjectService,
     CategoryService,
-    RequirementService
+    RequirementService,
+    RecommendationService
   ]
 })
 export class AppModule {}

@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons end>
+      <button 
+        ion-button icon-only 
+        (click)="fc()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Requirement</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="segment">
+    <ion-segment-button value="info">
+      Info
+    </ion-segment-button>
+    <ion-segment-button value="recommendations">
+      Recommendations
+    </ion-segment-button>
+  </ion-segment>
+  
+  <div [ngSwitch]="segment">
+    <ion-list *ngSwitchCase="'info'">
+      <ion-item text-wrap text-justify>
+        <h2>{{ requirement.title }}</h2>
+        <br />
+        <p>{{ requirement.description }}</p>
+      </ion-item>
+    </ion-list>    
+  
+    <ion-list *ngSwitchCase="'recommendations'">
+      <ion-item ion-item *ngIf="recommendations?.length == 0">
+        No Recommendations
+      </ion-item>
+
+      <ion-card *ngFor="let recommendation of recommendations">
+        <ion-item>
+          <h2>{{ recommendation.projectBName }}</h2>
+          <p>Distance: {{ recommendation.distance }}</p>
+        </ion-item>
+      
+        <ion-card-content>
+          <p>{{ recommendation.requirementBDescription }}</p>
+        </ion-card-content>
+      
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-start clear small color="secondary">
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
+              <div>Accept</div>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-start clear small color="danger">
+              <ion-icon name="close-circle"></ion-icon>
+              <div>Reject</div>
+            </button>
+          </ion-col>
+          <ion-col align-self-center text-center>
+            <ion-note>
+              {{ recommendation.createdAtDays }} days ago
+            </ion-note>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>

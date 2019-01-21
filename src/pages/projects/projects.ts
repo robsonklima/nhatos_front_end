@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 
 import { Project } from '../../models/project';
 import { ProjectPage } from './project';
@@ -12,6 +12,7 @@ export class ProjectsPage {
   projects: Project[] = [];
 
   constructor(
+    private loadingCtrl: LoadingController,
     private navCtrl: NavController,
     private projectService: ProjectService
   ) {}
@@ -22,11 +23,18 @@ export class ProjectsPage {
 
   getProjects(): Promise<Project[]> {
     return new Promise((resolve, reject) => {
+      const loading = this.loadingCtrl.create({ 
+        content: 'Please wait...' 
+      });
+      loading.present();
+
       this.projectService.getAll().subscribe((projects) => { 
+        loading.dismiss();
         this.projects = projects;
 
         resolve(projects);
       }, e => {
+        loading.dismiss();
         reject();
       })
     });
@@ -34,6 +42,10 @@ export class ProjectsPage {
 
   onLoadProject(project: Project) {
     this.navCtrl.push(ProjectPage, { project: project });
+  }
+
+  onLoadProjectForm() {
+    //to do
   }
 
   filterProjects(ev: any) {

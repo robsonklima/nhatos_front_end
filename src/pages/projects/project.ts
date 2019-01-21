@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, NavController } from 'ionic-angular';
 
 import { Project } from '../../models/project';
 import { Category } from '../../models/category';
@@ -7,6 +7,7 @@ import { Requirement } from '../../models/requirement';
 
 import { CategoryService } from '../../services/category';
 import { RequirementService } from '../../services/requirement';
+import { RequirementPage } from '../requirements/requirement';
 
 @Component({
   templateUrl: 'project.html'
@@ -19,6 +20,7 @@ export class ProjectPage {
 
   constructor(
     private navParams: NavParams,
+    private navCtrl: NavController,
     private categoryService: CategoryService,
     private requirementService: RequirementService
   ) {
@@ -53,5 +55,9 @@ export class ProjectPage {
         reject();
       })
     });
+  }
+
+  onLoadRequirement(requirement: Requirement) {
+    this.navCtrl.push(RequirementPage, { requirement: requirement });
   }
 }

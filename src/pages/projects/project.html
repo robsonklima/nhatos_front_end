@@ -7,19 +7,17 @@
 </ion-header>
 
 <ion-content>
-  <div padding>
-    <ion-segment [(ngModel)]="segment">
-      <ion-segment-button value="info">
-        Info
-      </ion-segment-button>
-      <ion-segment-button value="categories">
-        Categories
-      </ion-segment-button>
-      <ion-segment-button value="requirements">
-        Requirements
-      </ion-segment-button>
-    </ion-segment>
-  </div>
+  <ion-segment [(ngModel)]="segment">
+    <ion-segment-button value="info">
+      Info
+    </ion-segment-button>
+    <ion-segment-button value="categories">
+      Categories
+    </ion-segment-button>
+    <ion-segment-button value="requirements">
+      Requirements
+    </ion-segment-button>
+  </ion-segment>
   
   <div [ngSwitch]="segment">
     <ion-list *ngSwitchCase="'info'">
@@ -46,9 +44,9 @@
         No Requirements
       </ion-item>
 
-      <ion-item ion-item text-wrap *ngFor="let requirement of requirements">
-        <h2>{{ requirement.title }}</h2>
-      </ion-item>
+      <button ion-item *ngFor="let requirement of requirements" (click)="onLoadRequirement(requirement)">
+        {{ requirement.title }}
+      </button>
     </ion-list>
   </div>
 </ion-content>
