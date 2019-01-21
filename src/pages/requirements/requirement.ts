@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, AlertController } from 'ionic-angular';
 
 import { Requirement } from '../../models/requirement';
 import { Recommendation } from '../../models/recommendation';
@@ -16,6 +16,7 @@ export class RequirementPage {
 
   constructor(
     private navParams: NavParams,
+    private alertCtrl: AlertController,
     private recommendationService: RecommendationService
   ) {
     this.requirement = this.navParams.get('requirement');
@@ -36,5 +37,57 @@ export class RequirementPage {
         reject();
       })
     });
+  }
+
+  public acceptRecommendation() {
+    const confirmacao = this.alertCtrl.create({
+      title: 'Confirmation',
+      message: 'Are you sure to accept this recommendation?',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => { }
+        },
+        {
+          text: 'Accept',
+          handler: () => {
+            
+          }
+        }
+      ]
+    });
+
+    confirmacao.present();
+  }
+
+  public rejectRecommendation() {
+    const confirmacao = this.alertCtrl.create({
+      title: 'Confirmation',
+      message: 'Are you sure to reject this recommendation?',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => { }
+        },
+        {
+          text: 'Reject',
+          handler: () => {
+            
+          }
+        }
+      ]
+    });
+
+    confirmacao.present();
+  }
+
+  public moreInformations() {
+    const alert = this.alertCtrl.create({
+      title: 'New Friend!',
+      subTitle: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
+      buttons: ['OK']
+    });
+    
+    alert.present();
   }
 }

@@ -1,9 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons end>
-      <button 
-        ion-button icon-only 
-        (click)="fc()">
+      <button ion-button icon-only (click)="moreInformations()">
         <ion-icon name="more"></ion-icon>
       </button>
     </ion-buttons>
@@ -48,13 +46,13 @@
       
         <ion-row>
           <ion-col>
-            <button ion-button icon-start clear small color="secondary">
+            <button ion-button icon-start clear small color="secondary" (click)="acceptRecommendation()">
               <ion-icon name="checkmark-circle-outline"></ion-icon>
               <div>Accept</div>
             </button>
           </ion-col>
           <ion-col>
-            <button ion-button icon-start clear small color="danger">
+            <button ion-button icon-start clear small color="danger" (click)="rejectRecommendation()">
               <ion-icon name="close-circle"></ion-icon>
               <div>Reject</div>
             </button>
