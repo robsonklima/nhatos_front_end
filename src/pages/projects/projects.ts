@@ -59,12 +59,4 @@ export class ProjectsPage {
       }
     });
   }
-
-  doRefresh(refresher) {
-    this.getProjects().then(() => {
-      refresher.complete();
-    }).catch(() => {
-      refresher.complete();
-    })
-  }
 }
