@@ -13,8 +13,8 @@ export class RecommendationService {
     private http: Http
   ) {}
 
-  GetByRequirement(requirement_id: number): Observable<Recommendation[]> {
-    return this.http.get(Config.API_URL + 'recommendations/' + requirement_id)
+  GetByRequirement(requirementId: number): Observable<Recommendation[]> {
+    return this.http.get(Config.API_URL + 'recommendations/' + requirementId)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }

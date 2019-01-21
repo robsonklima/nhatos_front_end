@@ -15,6 +15,7 @@ import { RequirementPage } from '../pages/requirements/requirement';
 import { ProjectService } from '../services/project';
 import { CategoryService } from '../services/category';
 import { RequirementService } from '../services/requirement';
+import { TaskService } from '../services/task';
 import { RecommendationService } from '../services/recommendation';
 
 @NgModule({
@@ -45,6 +46,7 @@ import { RecommendationService } from '../services/recommendation';
     ProjectService,
     CategoryService,
     RequirementService,
+    TaskService,
     RecommendationService
   ]
 })

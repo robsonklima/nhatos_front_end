@@ -35,7 +35,7 @@ export class ProjectPage {
 
   getProjectCategories(): Promise<Category[]> {
     return new Promise((resolve, reject) => {
-      this.categoryService.GetByProject(this.project.project_id).subscribe((categories) => { 
+      this.categoryService.GetByProject(this.project.projectId).subscribe((categories) => { 
         this.categories = categories;
 
         resolve(categories);
@@ -47,7 +47,7 @@ export class ProjectPage {
 
   getProjectRequirements(): Promise<Requirement[]> {
     return new Promise((resolve, reject) => {
-      this.requirementService.GetByProject(this.project.project_id).subscribe((requirements) => { 
+      this.requirementService.GetByProject(this.project.projectId).subscribe((requirements) => { 
         this.requirements = requirements;
 
         resolve(requirements);

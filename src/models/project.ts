@@ -1,7 +1,7 @@
 export class Project {
-  project_id: string;
+  projectId: string;
   name: string;
   description: string;
-  categories_count: number;
-  requirements_count: number;
+  categoriesCount: number;
+  requirementsCount: number;
 }

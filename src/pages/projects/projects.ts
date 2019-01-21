@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController } from 'ionic-angular';
 
 import { Project } from '../../models/project';
 import { ProjectPage } from './project';
@@ -14,11 +14,14 @@ export class ProjectsPage {
   constructor(
     private loadingCtrl: LoadingController,
     private navCtrl: NavController,
+    private alertCtrl: AlertController,
     private projectService: ProjectService
   ) {}
 
   ionViewDidLoad() {
-    this.getProjects();
+    this.getProjects().then(() => {}).catch((e) => {
+      this.showAlert('An error occured!');
+    });
   }
 
   getProjects(): Promise<Project[]> {
@@ -58,5 +61,15 @@ export class ProjectsPage {
         })
       }
     });
+  }
+
+  public showAlert(message: string) {
+    const alert = this.alertCtrl.create({
+      title: 'Alert',
+      subTitle: message,
+      buttons: ['OK']
+    });
+    
+    alert.present();
   }
 }
