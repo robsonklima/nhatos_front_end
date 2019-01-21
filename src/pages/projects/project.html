@@ -23,14 +23,21 @@
     <ion-list *ngSwitchCase="'info'">
       <ion-item text-wrap text-justify>
         <h2>{{ project.name }}</h2>
-        <br />
+        <ion-badge 
+          *ngIf="project.percentageCompleted != 'None'"
+          [ngClass]="{ 'bg-green': project.percentageCompleted > 90, 
+            'bg-orange': project.percentageCompleted > 50 && project.percentageCompleted <= 90,
+            'bg-red': project.percentageCompleted <= 50 }">
+          {{ project.percentageCompleted }}% done
+        </ion-badge>
+        <br /><br />
         <p>{{ project.description }}</p>
       </ion-item>
     </ion-list>
   
     <ion-list *ngSwitchCase="'categories'">
       <ion-item ion-item *ngIf="categories.length == 0">
-        No categories
+          <p text-center>No categories found</p>
       </ion-item>
 
       <ion-item ion-item text-wrap *ngFor="let category of categories">
@@ -41,11 +48,18 @@
 
     <ion-list *ngSwitchCase="'requirements'">
       <ion-item ion-item *ngIf="requirements.length == 0">
-        No Requirements
+        <p text-center>No requirements found</p>
       </ion-item>
 
       <button ion-item *ngFor="let requirement of requirements" (click)="onLoadRequirement(requirement)">
         {{ requirement.title }}
+        <ion-badge item-end
+          *ngIf="requirement.percentageCompleted != 'None'"
+          [ngClass]="{ 'bg-green': requirement.percentageCompleted > 90, 
+            'bg-orange': requirement.percentageCompleted > 50 && requirement.percentageCompleted <= 90,
+            'bg-red': requirement.percentageCompleted <= 50 }">
+          {{ requirement.percentageCompleted }}%
+        </ion-badge>
       </button>
     </ion-list>
   </div>

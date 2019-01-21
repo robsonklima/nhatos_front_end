@@ -17,11 +17,12 @@
       <h3>
         {{ project.categoriesCount }} categories 
         &#8226; {{ project.requirementsCount }} requirements
+        &#8226; {{ project.tasksCount }} tasks
       </h3>
     </button>
 
     <ion-item *ngIf="projects.length == 0 || !projects">
-      No Projects found
+      <p text-center>No Projects found</p>
     </ion-item>
   </ion-list>
 </ion-content>

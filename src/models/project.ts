@@ -4,4 +4,6 @@ export class Project {
   description: string;
   categoriesCount: number;
   requirementsCount: number;
+  tasksCount: number;
+  percentageCompleted: string;
 }

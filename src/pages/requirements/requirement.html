@@ -13,10 +13,10 @@
 <ion-content>
   <ion-segment [(ngModel)]="segment">
     <ion-segment-button value="info">
-      Info
+      INFO
     </ion-segment-button>
     <ion-segment-button value="tasks">
-      Tasks
+      TASKS ({{ tasks?.length }})
     </ion-segment-button>
     <ion-segment-button value="recommendations">
       REC ({{ recommendations?.length }})
@@ -34,22 +34,22 @@
 
     <ion-list *ngSwitchCase="'tasks'">
         <ion-item ion-item *ngIf="tasks?.length == 0">
-          No Tasks
+            <p text-center>No tasks found</p>
         </ion-item>
   
         <button ion-item *ngFor="let task of tasks">
           {{ task.name }}
-          <p item-end [ngClass]="{ 'color-green': task.percentageCompleted > 90, 
-                                   'color-orange': task.percentageCompleted > 50 && task.percentageCompleted <= 90,
-                                   'color-red': task.percentageCompleted <= 50 }">
-            {{ task.percentageCompleted }}% Completed
-          </p>
+          <ion-badge item-end [ngClass]="{ 'bg-green': task.percentageCompleted > 90, 
+                                   'bg-orange': task.percentageCompleted > 50 && task.percentageCompleted <= 90,
+                                   'bg-red': task.percentageCompleted <= 50 }">
+            {{ task.percentageCompleted }}%
+          </ion-badge>
         </button>
       </ion-list> 
   
     <ion-list *ngSwitchCase="'recommendations'">
       <ion-item ion-item *ngIf="recommendations?.length == 0">
-        No Recommendations
+          <p text-center>No recommendations found</p>
       </ion-item>
 
       <ion-card *ngFor="let recommendation of recommendations">

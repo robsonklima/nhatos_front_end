@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { ProjectsPage } from '../pages/projects/projects';
 import { ProjectPage } from '../pages/projects/project';
 import { RequirementPage } from '../pages/requirements/requirement';
+import { CategoriesPage } from '../pages/categories/categories';
 
 import { ProjectService } from '../services/project';
 import { CategoryService } from '../services/category';
@@ -24,7 +25,8 @@ import { RecommendationService } from '../services/recommendation';
     HomePage,
     ProjectsPage,
     ProjectPage,
-    RequirementPage
+    RequirementPage,
+    CategoriesPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { RecommendationService } from '../services/recommendation';
     HomePage,
     ProjectsPage,
     ProjectPage,
-    RequirementPage
+    RequirementPage,
+    CategoriesPage
   ],
   providers: [
     StatusBar,

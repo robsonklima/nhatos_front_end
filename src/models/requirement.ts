@@ -9,4 +9,6 @@ export class Requirement {
   userModifiedAt: string;
   botModifiedAt: string;
   createdAt: string;
+  tasksCount: number;
+  percentageCompleted: string;
 }

@@ -13,6 +13,12 @@ export class CategoryService {
     private http: Http
   ) {}
 
+  GetAll(): Observable<Category[]> {
+    return this.http.get(Config.API_URL + 'categories')
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
   GetByProject(projectId: string): Observable<Category[]> {
     return this.http.get(Config.API_URL + 'categories/' + projectId)
       .map((res: Response) => res.json())
