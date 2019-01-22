@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
-import { NavParams, NavController } from 'ionic-angular';
+import { NavParams, NavController, AlertController } from 'ionic-angular';
 
 import { Project } from '../../models/project';
 import { Category } from '../../models/category';
 import { Requirement } from '../../models/requirement';
+import { Recommendation } from '../../models/recommendation';
 
 import { CategoryService } from '../../services/category';
 import { RequirementService } from '../../services/requirement';
+import { RecommendationService } from '../../services/recommendation';
+
 import { RequirementPage } from '../requirements/requirement';
 
 @Component({
@@ -17,25 +20,30 @@ export class ProjectPage {
   project: Project;
   categories: Category[] = [];
   requirements: Requirement[] = [];
+  recommendations: Recommendation[] = [];
 
   constructor(
     private navParams: NavParams,
     private navCtrl: NavController,
+    private alertCtrl: AlertController,
     private categoryService: CategoryService,
-    private requirementService: RequirementService
+    private requirementService: RequirementService,
+    private recommendationService: RecommendationService
   ) {
     this.project = this.navParams.get('project');
   }
 
   ionViewDidLoad() {
-    this.getProjectCategories().then(() => {
-      this.getProjectRequirements();
+    this.getCategories().then(() => {
+      this.getRequirements().then(() => {
+        this.getRecommendations();
+      });
     });
   }
 
-  getProjectCategories(): Promise<Category[]> {
+  getCategories(): Promise<Category[]> {
     return new Promise((resolve, reject) => {
-      this.categoryService.GetByProject(this.project.projectId).subscribe((categories) => { 
+      this.categoryService.GetByProjectId(this.project.projectId).subscribe((categories) => { 
         this.categories = categories;
 
         resolve(categories);
@@ -45,9 +53,9 @@ export class ProjectPage {
     });
   }
 
-  getProjectRequirements(): Promise<Requirement[]> {
+  getRequirements(): Promise<Requirement[]> {
     return new Promise((resolve, reject) => {
-      this.requirementService.GetByProject(this.project.projectId).subscribe((requirements) => { 
+      this.requirementService.GetByProjectId(this.project.projectId).subscribe((requirements) => { 
         this.requirements = requirements;
 
         resolve(requirements);
@@ -57,7 +65,62 @@ export class ProjectPage {
     });
   }
 
+  getRecommendations(): Promise<Recommendation[]> {
+    return new Promise((resolve, reject) => {
+      this.recommendationService.GetByProjectId(this.project.projectId)
+        .subscribe((recommendations) => { 
+        this.recommendations = recommendations;
+
+        resolve(recommendations);
+      }, e => {
+        reject();
+      })
+    });
+  }
+
   onLoadRequirement(requirement: Requirement) {
     this.navCtrl.push(RequirementPage, { requirement: requirement });
+  }
+
+  public acceptRecommendation() {
+    const confirmacao = this.alertCtrl.create({
+      title: 'Confirmation',
+      message: 'Are you sure to accept this recommendation?',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => { }
+        },
+        {
+          text: 'Accept',
+          handler: () => {
+            
+          }
+        }
+      ]
+    });
+
+    confirmacao.present();
+  }
+
+  public rejectRecommendation() {
+    const confirmacao = this.alertCtrl.create({
+      title: 'Confirmation',
+      message: 'Are you sure to reject this recommendation?',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => { }
+        },
+        {
+          text: 'Reject',
+          handler: () => {
+            
+          }
+        }
+      ]
+    });
+
+    confirmacao.present();
   }
 }

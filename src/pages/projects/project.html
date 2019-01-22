@@ -17,6 +17,12 @@
     <ion-segment-button value="requirements">
       REQ ({{ requirements?.length }})
     </ion-segment-button>
+    <ion-segment-button value="risks">
+      RIS (0)
+    </ion-segment-button>
+    <ion-segment-button value="recommendations">
+      REC ({{ recommendations?.length }})
+    </ion-segment-button>
   </ion-segment>
   
   <div [ngSwitch]="segment">
@@ -72,6 +78,49 @@
           {{ requirement.percentageCompleted }}%
         </ion-badge>
       </button>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'risks'">
+      <ion-item ion-item>
+        <p text-center>No risks found</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'recommendations'">
+      <ion-item ion-item *ngIf="recommendations?.length == 0">
+          <p text-center>No recommendations found</p>
+      </ion-item>
+
+      <ion-card *ngFor="let recommendation of recommendations">
+        <ion-item>
+          <h2>{{ recommendation.projectBName }}</h2>
+          <p>Distance: {{ recommendation.distance }}</p>
+        </ion-item>
+      
+        <ion-card-content>
+          <p>{{ recommendation.requirementBDescription }}</p>
+        </ion-card-content>
+      
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-start clear small color="secondary" (click)="acceptRecommendation()">
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
+              <div>Accept</div>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-start clear small color="danger" (click)="rejectRecommendation()">
+              <ion-icon name="close-circle"></ion-icon>
+              <div>Reject</div>
+            </button>
+          </ion-col>
+          <ion-col align-self-center text-center>
+            <ion-note>
+              {{ recommendation.createdAtDays }} days ago
+            </ion-note>
+          </ion-col>
+        </ion-row>
+      </ion-card>
     </ion-list>
   </div>
 </ion-content>

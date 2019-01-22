@@ -1,5 +1,5 @@
 export class Project {
-  projectId: string;
+  projectId: number;
   name: string;
   description: string;
   categoriesCount: number;
@@ -8,4 +8,5 @@ export class Project {
   percentageCompleted: string;
   size: string;
   methodology: string;
+  recommendationsCount: number;
 }

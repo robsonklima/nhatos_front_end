@@ -14,11 +14,12 @@
   <ion-list>
     <button ion-item *ngFor="let project of projects" (click)="onLoadProject(project)">
       <h2>{{ project.name }}</h2>
-      <h3>
+      <p>
         {{ project.categoriesCount }} categories 
-        &#8226; {{ project.requirementsCount }} requirements
+        &#8226; {{ project.requirementsCount }} reqs
         &#8226; {{ project.tasksCount }} tasks
-      </h3>
+        &#8226; {{ project.recommendationsCount }} rec
+      </p>
     </button>
 
     <ion-item *ngIf="projects.length == 0 || !projects">

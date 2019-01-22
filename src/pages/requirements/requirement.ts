@@ -47,7 +47,7 @@ export class RequirementPage {
 
   getRecommendations(): Promise<Recommendation[]> {
     return new Promise((resolve, reject) => {
-      this.recommendationService.GetByRequirement(this.requirement.requirementId)
+      this.recommendationService.GetByRequirementId(this.requirement.requirementId)
         .subscribe((recommendations) => { 
         this.recommendations = recommendations;
 

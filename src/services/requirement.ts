@@ -13,7 +13,7 @@ export class RequirementService {
     private http: Http
   ) {}
 
-  GetByProject(projectId: string): Observable<Requirement[]> {
+  GetByProjectId(projectId: number): Observable<Requirement[]> {
     return this.http.get(Config.API_URL + 'requirements/' + projectId)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
