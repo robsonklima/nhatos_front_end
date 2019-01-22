@@ -25,9 +25,10 @@
   
   <div [ngSwitch]="segment">
     <ion-list *ngSwitchCase="'info'">
-      <ion-item text-wrap text-justify>
+      <ion-item text-wrap text-center>
         <h2>{{ requirement.title }}</h2>
-        <br />
+      </ion-item>
+      <ion-item text-wrap text-justify>
         <p>{{ requirement.description }}</p>
       </ion-item>
     </ion-list>

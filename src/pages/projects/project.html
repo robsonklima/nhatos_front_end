@@ -21,16 +21,23 @@
   
   <div [ngSwitch]="segment">
     <ion-list *ngSwitchCase="'info'">
-      <ion-item text-wrap text-justify>
+      <ion-item text-wrap text-center>
         <h2>{{ project.name }}</h2>
-        <ion-badge 
-          *ngIf="project.percentageCompleted != 'None'"
+      </ion-item>
+      <ion-item text-wrap text-justify>
+        <p>Size</p>
+        <h2 item-end>{{ project.size }}</h2>
+      </ion-item>
+      <ion-item text-wrap *ngIf="project.percentageCompleted != 'None'">
+        <p>Percentage Completed</p>
+        <ion-badge item-end
           [ngClass]="{ 'bg-green': project.percentageCompleted > 90, 
             'bg-orange': project.percentageCompleted > 50 && project.percentageCompleted <= 90,
             'bg-red': project.percentageCompleted <= 50 }">
-          {{ project.percentageCompleted }}% done
+          {{ project.percentageCompleted }}%
         </ion-badge>
-        <br /><br />
+      </ion-item>
+      <ion-item text-wrap text-justify>
         <p>{{ project.description }}</p>
       </ion-item>
     </ion-list>

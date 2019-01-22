@@ -6,4 +6,6 @@ export class Project {
   requirementsCount: number;
   tasksCount: number;
   percentageCompleted: string;
+  size: string;
+  methodology: string;
 }
