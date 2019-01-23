@@ -84,7 +84,7 @@ export class ProjectPage {
   public acceptRecommendation(recommendation: Recommendation) {
     const confirmacao = this.alertCtrl.create({
       title: 'Confirmation',
-      message: 'Are you sure to accept this recommendation?',
+      message: 'Are you sure to admit this recommendation?',
       buttons: [
         {
           text: 'Cancel',
@@ -109,7 +109,7 @@ export class ProjectPage {
   public rejectRecommendation(recommendation: Recommendation) {
     const confirmacao = this.alertCtrl.create({
       title: 'Confirmation',
-      message: 'Are you sure to reject this recommendation?',
+      message: 'Are you sure to refuse this recommendation?',
       buttons: [
         {
           text: 'Cancel',
