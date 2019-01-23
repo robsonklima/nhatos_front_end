@@ -29,7 +29,6 @@ export class RequirementPage {
 
   ionViewDidLoad() {
     this.getTasks();
-    this.getRecommendations();
   }
 
   getTasks(): Promise<Task[]> {
@@ -43,70 +42,5 @@ export class RequirementPage {
         reject();
       })
     });
-  }
-
-  getRecommendations(): Promise<Recommendation[]> {
-    return new Promise((resolve, reject) => {
-      this.recommendationService.GetByRequirementId(this.requirement.requirementId)
-        .subscribe((recommendations) => { 
-        this.recommendations = recommendations;
-
-        resolve(recommendations);
-      }, e => {
-        reject();
-      })
-    });
-  }
-
-  public acceptRecommendation() {
-    const confirmacao = this.alertCtrl.create({
-      title: 'Confirmation',
-      message: 'Are you sure to accept this recommendation?',
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: () => { }
-        },
-        {
-          text: 'Accept',
-          handler: () => {
-            
-          }
-        }
-      ]
-    });
-
-    confirmacao.present();
-  }
-
-  public rejectRecommendation() {
-    const confirmacao = this.alertCtrl.create({
-      title: 'Confirmation',
-      message: 'Are you sure to reject this recommendation?',
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: () => { }
-        },
-        {
-          text: 'Reject',
-          handler: () => {
-            
-          }
-        }
-      ]
-    });
-
-    confirmacao.present();
-  }
-
-  public moreInformations() {
-    const alert = this.alertCtrl.create({
-      title: 'New Friend!',
-      subTitle: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
-      buttons: ['OK']
-    });
-    
-    alert.present();
   }
 }

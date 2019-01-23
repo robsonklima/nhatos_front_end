@@ -1,4 +1,5 @@
 export class Recommendation {
+  recommendationId: number;
   requirementAId: number;
   projectAId: number;
   projectAName: string;

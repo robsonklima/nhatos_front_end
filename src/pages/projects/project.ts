@@ -67,8 +67,7 @@ export class ProjectPage {
 
   getRecommendations(): Promise<Recommendation[]> {
     return new Promise((resolve, reject) => {
-      this.recommendationService.GetByProjectId(this.project.projectId)
-        .subscribe((recommendations) => { 
+      this.recommendationService.GetByProjectId(this.project.projectId).subscribe((recommendations) => { 
         this.recommendations = recommendations;
 
         resolve(recommendations);
@@ -121,7 +120,9 @@ export class ProjectPage {
           handler: () => {
             recommendation.accepted = 0;
 
-            this.recommendationService.Post(recommendation).subscribe((r) => {}, e => {});
+            this.recommendationService.Post(recommendation).subscribe((r) => {
+              this.getRecommendations();
+            }, e => {});
           }
         }
       ]
