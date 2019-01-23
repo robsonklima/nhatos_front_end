@@ -1,21 +1,21 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Requirement</ion-title>
+    <ion-title>Requirement {{ segment }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-segment [(ngModel)]="segment">
-    <ion-segment-button value="info">
+    <ion-segment-button value="Info">
       INFO
     </ion-segment-button>
-    <ion-segment-button value="tasks">
+    <ion-segment-button value="Tasks">
       TASKS ({{ tasks?.length }})
     </ion-segment-button>
   </ion-segment>
   
   <div [ngSwitch]="segment">
-    <ion-list *ngSwitchCase="'info'">
+    <ion-list *ngSwitchCase="'Info'">
       <ion-item text-wrap text-center>
         <h2>{{ requirement.title }}</h2>
       </ion-item>
@@ -24,7 +24,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'tasks'">
+    <ion-list *ngSwitchCase="'Tasks'">
         <ion-item ion-item *ngIf="tasks?.length == 0">
             <p text-center>No tasks found</p>
         </ion-item>

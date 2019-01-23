@@ -13,7 +13,7 @@ import { RecommendationService } from '../../services/recommendation';
   templateUrl: 'requirement.html'
 })
 export class RequirementPage {
-  segment: string = "info";
+  segment: string = "Info";
   requirement: Requirement;
   tasks: Task[] = [];
   recommendations: Recommendation[] = [];

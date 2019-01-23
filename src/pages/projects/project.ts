@@ -16,7 +16,7 @@ import { RequirementPage } from '../requirements/requirement';
   templateUrl: 'project.html'
 })
 export class ProjectPage {
-  segment: string = "info";
+  segment: string = "Info";
   project: Project;
   categories: Category[] = [];
   requirements: Requirement[] = [];

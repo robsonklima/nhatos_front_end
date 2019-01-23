@@ -1,32 +1,32 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Project
+      Project {{ segment }}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-segment [(ngModel)]="segment">
-    <ion-segment-button value="info">
+    <ion-segment-button value="Info">
       Info
     </ion-segment-button>
     
-    <ion-segment-button value="categories">
+    <ion-segment-button value="Categories">
       CAT ({{ categories?.length }})
     </ion-segment-button>
 
-    <ion-segment-button value="requirements">
+    <ion-segment-button value="Requirements">
       REQ ({{ requirements?.length }})
     </ion-segment-button>
 
-    <ion-segment-button value="recommendations">
+    <ion-segment-button value="Recommendations">
       REC ({{ recommendations?.length }})
     </ion-segment-button>
   </ion-segment>
   
   <div [ngSwitch]="segment">
-    <ion-list *ngSwitchCase="'info'">
+    <ion-list *ngSwitchCase="'Info'">
       <ion-item text-wrap text-center>
         <h2>{{ project.name }}</h2>
       </ion-item>
@@ -52,7 +52,7 @@
       </ion-item>
     </ion-list>
   
-    <ion-list *ngSwitchCase="'categories'">
+    <ion-list *ngSwitchCase="'Categories'">
       <ion-item ion-item *ngIf="categories.length == 0">
           <p text-center>No categories found</p>
       </ion-item>
@@ -63,7 +63,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'requirements'">
+    <ion-list *ngSwitchCase="'Requirements'">
       <ion-item ion-item *ngIf="requirements.length == 0">
         <p text-center>No requirements found</p>
       </ion-item>
@@ -80,7 +80,7 @@
       </button>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'recommendations'">
+    <ion-list *ngSwitchCase="'Recommendations'">
       <ion-item ion-item *ngIf="recommendations?.length == 0">
           <p text-center>No recommendations found</p>
       </ion-item>
