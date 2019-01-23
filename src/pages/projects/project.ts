@@ -91,6 +91,10 @@ export class ProjectPage {
           handler: () => {}
         },
         {
+          text: 'Edit',
+          handler: () => {}
+        },
+        {
           text: 'Accept',
           handler: () => {
             recommendation.accepted = 1;
