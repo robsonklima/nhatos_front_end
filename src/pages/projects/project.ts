@@ -82,19 +82,23 @@ export class ProjectPage {
     this.navCtrl.push(RequirementPage, { requirement: requirement });
   }
 
-  public acceptRecommendation() {
+  public acceptRecommendation(recommendation: Recommendation) {
     const confirmacao = this.alertCtrl.create({
       title: 'Confirmation',
       message: 'Are you sure to accept this recommendation?',
       buttons: [
         {
           text: 'Cancel',
-          handler: () => { }
+          handler: () => {}
         },
         {
           text: 'Accept',
           handler: () => {
-            
+            recommendation.accepted = 1;
+
+            this.recommendationService.Post(recommendation).subscribe((rec) => {
+              this.getRecommendations();
+            }, e => {});
           }
         }
       ]
@@ -103,19 +107,21 @@ export class ProjectPage {
     confirmacao.present();
   }
 
-  public rejectRecommendation() {
+  public rejectRecommendation(recommendation: Recommendation) {
     const confirmacao = this.alertCtrl.create({
       title: 'Confirmation',
       message: 'Are you sure to reject this recommendation?',
       buttons: [
         {
           text: 'Cancel',
-          handler: () => { }
+          handler: () => {}
         },
         {
           text: 'Reject',
           handler: () => {
-            
+            recommendation.accepted = 0;
+
+            this.recommendationService.Post(recommendation).subscribe((r) => {}, e => {});
           }
         }
       ]

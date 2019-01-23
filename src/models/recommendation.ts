@@ -10,4 +10,5 @@ export class Recommendation {
   distance: number;
   createdAt: string;
   createdAtDays: number;
+  accepted: number;
 }

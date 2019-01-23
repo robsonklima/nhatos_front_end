@@ -24,4 +24,10 @@ export class RecommendationService {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
+
+  Post(recommendation: Recommendation): Observable<any> {
+    return this.http.post(Config.API_URL + 'recommendations/projects', recommendation)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
+  }
 }

@@ -17,9 +17,9 @@
     <ion-segment-button value="requirements">
       REQ ({{ requirements?.length }})
     </ion-segment-button>
-    <ion-segment-button value="risks">
+    <!--<ion-segment-button value="risks">
       RIS (0)
-    </ion-segment-button>
+    </ion-segment-button>-->
     <ion-segment-button value="recommendations">
       REC ({{ recommendations?.length }})
     </ion-segment-button>
@@ -80,11 +80,11 @@
       </button>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'risks'">
+    <!--<ion-list *ngSwitchCase="'risks'">
       <ion-item ion-item>
         <p text-center>No risks found</p>
       </ion-item>
-    </ion-list>
+    </ion-list>-->
 
     <ion-list *ngSwitchCase="'recommendations'">
       <ion-item ion-item *ngIf="recommendations?.length == 0">
@@ -103,13 +103,13 @@
       
         <ion-row>
           <ion-col>
-            <button ion-button icon-start clear small color="secondary" (click)="acceptRecommendation()">
+            <button ion-button icon-start clear small color="secondary" (click)="acceptRecommendation(recommendation)">
               <ion-icon name="checkmark-circle-outline"></ion-icon>
               <div>Accept</div>
             </button>
           </ion-col>
           <ion-col>
-            <button ion-button icon-start clear small color="danger" (click)="rejectRecommendation()">
+            <button ion-button icon-start clear small color="danger" (click)="rejectRecommendation(recommendation)">
               <ion-icon name="close-circle"></ion-icon>
               <div>Reject</div>
             </button>
