@@ -13,8 +13,14 @@ export class RequirementService {
     private http: Http
   ) {}
 
+  getById(requirementId: number): Observable<Requirement> {
+    return this.http.get(Config.API_URL + 'requirements/' + requirementId)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
   getByProjectId(projectId: number): Observable<Requirement[]> {
-    return this.http.get(Config.API_URL + 'requirements/' + projectId)
+    return this.http.get(Config.API_URL + 'projects/requirements/' + projectId)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }

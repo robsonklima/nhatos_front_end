@@ -30,8 +30,10 @@ export class RequirementPage {
     this.requirement = this.navParams.get('requirement');
   }
 
-  ionViewDidLoad() {
-    this.getTasks();
+  ionViewWillEnter() {
+    this.refreshRequirement().then(() => {
+      this.getTasks();
+    })
   }
 
   onLoadRequirementForm(requirement: Requirement) {
@@ -53,10 +55,10 @@ export class RequirementPage {
         {
           text: 'Delete',
           handler: () => {
-            this.requirementService.delete(this.requirement.requirementId).subscribe((requirement) => {        
+            this.requirementService.delete(this.requirement.requirementId).subscribe(() => {        
                 this.presentToast('Item deleted successfully!');
       
-                this.navCtrl.popToRoot()
+                this.navCtrl.pop()
             },
             err => {
               this.presentToast('Something went wrong!');
@@ -69,14 +71,24 @@ export class RequirementPage {
     confirm.present();
   }
   
-
   getTasks(): Promise<Task[]> {
     return new Promise((resolve, reject) => {
-      this.taskService.getByRequirementId(this.requirement.requirementId)
-        .subscribe((tasks) => { 
+      this.taskService.getByRequirementId(this.requirement.requirementId).subscribe((tasks) => { 
         this.tasks = tasks;
 
         resolve(tasks);
+      }, e => {
+        reject();
+      })
+    });
+  }
+
+  refreshRequirement(): Promise<Requirement> {
+    return new Promise((resolve, reject) => {
+      this.requirementService.getById(this.requirement.requirementId).subscribe((requirement) => { 
+        this.requirement = requirement;
+        
+        resolve(requirement);
       }, e => {
         reject();
       })

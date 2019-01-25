@@ -20,7 +20,7 @@ export class ProjectsPage {
     private projectService: ProjectService
   ) {}
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     this.getProjects().then(() => {}).catch((e) => {
       this.showAlert('An error occured!');
     });

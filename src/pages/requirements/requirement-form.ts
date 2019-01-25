@@ -78,7 +78,7 @@ export class RequirementFormPage {
         loading.dismiss().then(() => {
           this.presentToast(requirement.title + ' saved successfully!');
 
-          this.navCtrl.popToRoot()
+          this.navCtrl.pop();
         });
       },
       err => {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams, NavController, AlertController } from 'ionic-angular';
+import { NavParams, NavController, AlertController, ToastController } from 'ionic-angular';
 
 import { Project } from '../../models/project';
 import { Category } from '../../models/category';
@@ -9,6 +9,7 @@ import { Recommendation } from '../../models/recommendation';
 import { RequirementPage } from '../requirements/requirement';
 import { ProjectFormPage } from './project-form';
 
+import { ProjectService } from '../../services/project';
 import { CategoryService } from '../../services/category';
 import { RequirementService } from '../../services/requirement';
 import { RecommendationService } from '../../services/recommendation';
@@ -28,6 +29,8 @@ export class ProjectPage {
     private navParams: NavParams,
     private navCtrl: NavController,
     private alertCtrl: AlertController,
+    private toastCtrl: ToastController,
+    private projectService: ProjectService,
     private categoryService: CategoryService,
     private requirementService: RequirementService,
     private recommendationService: RecommendationService
@@ -35,10 +38,12 @@ export class ProjectPage {
     this.project = this.navParams.get('project');
   }
 
-  ionViewDidLoad() {
-    this.getCategories().then(() => {
-      this.getRequirements().then(() => {
-        this.getRecommendations();
+  ionViewWillEnter() {
+    this.refreshProject().then(() => {
+      this.getCategories().then(() => {
+        this.getRequirements().then(() => {
+          this.getRecommendations();
+        });
       });
     });
   }
@@ -139,5 +144,54 @@ export class ProjectPage {
     });
 
     confirm.present();
+  }
+
+  onRemoveProject(requirement: Requirement) {
+    const confirm = this.alertCtrl.create({
+      title: 'Confirmation',
+      message: 'Are you sure to delete this project?',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {}
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.projectService.delete(this.project.projectId).subscribe(() => {        
+                this.presentToast('Item deleted successfully!');
+      
+                this.navCtrl.pop()
+            },
+            err => {
+              this.presentToast('Something went wrong!');
+            });
+          }
+        }
+      ]
+    });
+
+    confirm.present();
+  }
+
+  refreshProject(): Promise<Project> {
+    return new Promise((resolve, reject) => {
+      this.projectService.getById(this.project.projectId).subscribe((project) => { 
+        this.project = project;
+        
+        resolve(project);
+      }, e => {
+        reject();
+      })
+    });
+  }
+
+  async presentToast(msg: string) {
+    const toast = await this.toastCtrl.create({
+      message: msg,
+      duration: 2400
+    });
+
+    toast.present();
   }
 }

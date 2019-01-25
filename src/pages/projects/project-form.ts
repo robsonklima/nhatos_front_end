@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LoadingController, NavParams, ToastController, NavController } from 'ionic-angular';
 
+import { ProjectsPage } from './projects';
 import { Project } from '../../models/project';
 import { ProjectService } from '../../services/project';
+
 
 @Component({
   templateUrl: 'project-form.html'
@@ -48,7 +50,7 @@ export class ProjectFormPage {
         loading.dismiss().then(() => {
           this.presentToast(project.name + ' saved successfully!');
 
-          this.navCtrl.popToRoot()
+          this.navCtrl.popTo(ProjectsPage)
         });
       },
       err => { loading.dismiss(); });
@@ -57,7 +59,7 @@ export class ProjectFormPage {
         loading.dismiss().then(() => {
           this.presentToast(project.name + ' saved successfully!');
 
-          this.navCtrl.popToRoot()
+          this.navCtrl.pop()
         });
       },
       err => { loading.dismiss(); });

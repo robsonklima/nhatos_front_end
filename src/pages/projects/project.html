@@ -1,6 +1,9 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons end>
+      <button ion-button icon-only (click)="onRemoveProject(project)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
       <button ion-button icon-only (click)="onLoadProjectForm(project)">
         <ion-icon name="create"></ion-icon>
       </button>
