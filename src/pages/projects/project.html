@@ -43,6 +43,12 @@
         <p>Size</p>
         <h2 item-end>{{ project.size }}</h2>
       </ion-item>
+      
+      <ion-item text-wrap *ngIf="project.methodology">
+        <p>Methodology</p>
+        <h2 item-end>{{ project.methodology }}</h2>
+      </ion-item>
+
       <ion-item text-wrap *ngIf="project.percentageCompleted != 'None'">
         <p>Percentage Completed</p>
         <ion-badge item-end
@@ -52,10 +58,7 @@
           {{ project.percentageCompleted }}%
         </ion-badge>
       </ion-item>
-      <ion-item text-wrap *ngIf="project.methodology">
-        <p>Methodology</p>
-        <h2 item-end>{{ project.methodology }}</h2>
-      </ion-item>
+
       <ion-item text-wrap text-justify>
         <p>{{ project.description }}</p>
       </ion-item>
