@@ -5,9 +5,10 @@ import { Requirement } from '../../models/requirement';
 import { Task } from '../../models/task';
 import { Recommendation } from '../../models/recommendation';
 
+import { RequirementFormPage } from './requirement-form';
+import { TaskFormPage } from '../tasks/task-form';
 import { TaskService } from '../../services/task';
 import { RequirementService } from '../../services/requirement';
-import { RequirementFormPage } from './requirement-form';
 
 
 @Component({
@@ -43,14 +44,18 @@ export class RequirementPage {
       this.navCtrl.push(RequirementFormPage, { mode: 'New' });
   }
 
-  onLoadTaskForm(requirement: Requirement) {
-    //this.navCtrl.push(TaskFormPage, { mode: 'New' });
+  onLoadTaskFormNew(requirement: Requirement) {
+    this.navCtrl.push(TaskFormPage, { requirement: requirement, mode: 'New' });
+  }
+
+  onLoadTaskFormEdit(task: Task) {
+    this.navCtrl.push(TaskFormPage, { task: task, mode: 'Edit' });
   }
 
   onRemoveRequirement(requirement: Requirement) {
     const confirm = this.alertCtrl.create({
       title: 'Confirmation',
-      message: 'Are you sure to delete this requirement?',
+      message: 'Are you sure to delete the item ' + requirement.title + '?',
       buttons: [
         {
           text: 'Cancel',

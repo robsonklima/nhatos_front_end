@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onRemoveTask(task)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      {{ mode }} Task
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form #f="ngForm" (ngSubmit)="save(f)">
+    <ion-list class="inputs">
+      <ion-item>
+        <ion-label>Name</ion-label>
+
+        <ion-input type="text" name="name" [ngModel]="task?.name" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Percentual Completed</ion-label>
+
+        <ion-range name="percentageCompleted"  min="0" max="100" step="1" 
+          pin="true" mode="md" [ngModel]="task?.percentageCompleted">
+        </ion-range>
+      </ion-item>
+    </ion-list>
+
+    <div padding>
+      <button color="primary" ion-button block [disabled]="!f.valid">
+        Save
+      </button>
+    </div>
+  </form>
+</ion-content>

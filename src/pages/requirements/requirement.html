@@ -37,7 +37,7 @@
             <p text-center>No tasks found</p>
         </ion-item>
   
-        <button ion-item *ngFor="let task of tasks">
+        <button ion-item *ngFor="let task of tasks" (click)="onLoadTaskFormEdit(task)">
           {{ task.name }}
           <ion-badge item-end [ngClass]="{ 'bg-green': task.percentageCompleted > 90, 
                                    'bg-orange': task.percentageCompleted > 50 && task.percentageCompleted <= 90,
@@ -46,7 +46,7 @@
           </ion-badge>
         </button>
 
-        <button color="primary" clear ion-button block (click)="onLoadTaskForm()">
+        <button color="primary" clear ion-button block (click)="onLoadTaskFormNew(requirement)">
           <p>Add a New One</p>
         </button>
       </ion-list> 

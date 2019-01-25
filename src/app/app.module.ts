@@ -21,6 +21,7 @@ import { CategoryService } from '../services/category';
 import { RequirementService } from '../services/requirement';
 import { TaskService } from '../services/task';
 import { RecommendationService } from '../services/recommendation';
+import { TaskFormPage } from '../pages/tasks/task-form';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { RecommendationService } from '../services/recommendation';
     CategoriesPage,
     ProjectFormPage,
     RequirementFormPage,
+    TaskFormPage,
     SettingsPage
   ],
   imports: [
@@ -49,6 +51,7 @@ import { RecommendationService } from '../services/recommendation';
     CategoriesPage,
     ProjectFormPage,
     RequirementFormPage,
+    TaskFormPage,
     SettingsPage
   ],
   providers: [

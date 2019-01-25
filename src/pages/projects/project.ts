@@ -147,10 +147,10 @@ export class ProjectPage {
     confirm.present();
   }
 
-  onRemoveProject(requirement: Requirement) {
+  onRemoveProject(project: Project) {
     const confirm = this.alertCtrl.create({
       title: 'Confirmation',
-      message: 'Are you sure to delete this project?',
+      message: 'Are you sure to delete the item ' + project.name + '?',
       buttons: [
         {
           text: 'Cancel',
@@ -159,7 +159,7 @@ export class ProjectPage {
         {
           text: 'Delete',
           handler: () => {
-            this.projectService.delete(this.project.projectId).subscribe(() => {        
+            this.projectService.delete(project.projectId).subscribe(() => {        
                 this.presentToast('Item deleted successfully!');
       
                 this.navCtrl.pop()

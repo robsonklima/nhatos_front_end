@@ -18,4 +18,22 @@ export class TaskService {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
+
+  post(task: Task): Observable<any> {
+    return this.http.post(Config.API_URL + 'tasks', task)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
+  put(task: Task) {
+    return this.http.put(Config.API_URL + 'tasks/' + task.taskId, task)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
+  delete(taskId: number) {
+    return this.http.delete(Config.API_URL + 'tasks/' + taskId)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
+  }
 }
