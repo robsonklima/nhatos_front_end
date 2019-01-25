@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 
-import { Project } from '../../models/project';
 import { ProjectPage } from './project';
+import { ProjectFormPage } from './project-form';
+
+import { Project } from '../../models/project';
 import { ProjectService } from '../../services/project';
 
 @Component({
@@ -48,7 +50,7 @@ export class ProjectsPage {
   }
 
   onLoadProjectForm() {
-    //to do
+    this.navCtrl.push(ProjectFormPage, { mode: 'New' });
   }
 
   filterProjects(ev: any) {

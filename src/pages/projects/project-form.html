@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ mode }} Project
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form #f="ngForm" (ngSubmit)="save(f)">
+    <ion-list class="inputs">
+      <ion-item>
+        <ion-label>Name</ion-label>
+
+        <ion-input type="text" name="name" [ngModel]="project?.name" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Description</ion-label>
+
+        <ion-textarea type="text" name="description" [ngModel]="project?.description" required>          
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Size</ion-label>
+
+        <ion-select name="size" [ngModel]="project?.size" required> 
+            <ion-option value="SMALL">Small</ion-option>
+            <ion-option value="MEDIUM">Medium</ion-option>
+            <ion-option value="LARGE">Large</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Methodology</ion-label>
+
+        <ion-select name="methodology" [ngModel]="project?.methodology" required> 
+            <ion-option value="AGILE">Agile</ion-option>
+            <ion-option value="TRADITIONAL">Tradicional</ion-option>
+            <ion-option value="HYBRID">Hybrid</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <div padding>
+      <button color="primary" ion-button block [disabled]="!f.valid">
+        Save
+      </button>
+    </div>
+  </form>
+</ion-content>

@@ -18,4 +18,16 @@ export class ProjectService {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
+
+  post(project: Project): Observable<any> {
+    return this.http.post(Config.API_URL + 'projects', project)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
+  }
+
+  put(project: Project) {
+    return this.http.put(Config.API_URL + 'projects/' + project.projectId, project)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json()));
+  }
 }

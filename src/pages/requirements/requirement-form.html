@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ mode }} Requirement
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form #f="ngForm" (ngSubmit)="save(f)">
+    <ion-list class="inputs">
+      <ion-item>
+        <ion-label>Title</ion-label>
+
+        <ion-input type="text" name="title" [ngModel]="requirement?.title" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Description</ion-label>
+
+        <ion-textarea type="text" name="description" [ngModel]="requirement?.description" required>
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Project</ion-label>
+
+        <ion-select name="projectId" [ngModel]="requirement?.projectId" required> 
+            <ion-option 
+              *ngFor="let project of projects"
+              [value]="project.projectId">
+              {{ project.name }}
+            </ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Type</ion-label>
+
+        <ion-select name="type" [ngModel]="requirement?.type" required> 
+            <ion-option value="FUNCTIONAL">Functional</ion-option>
+            <ion-option value="NON_FUNCTIONAL">Non Functional</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Rat</ion-label>
+
+        <ion-textarea type="text" name="rat" [ngModel]="requirement?.rat">
+        </ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <div padding>
+      <button color="primary" ion-button block [disabled]="!f.valid">
+        Save
+      </button>
+    </div>
+  </form>
+</ion-content>

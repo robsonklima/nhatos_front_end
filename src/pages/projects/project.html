@@ -1,5 +1,11 @@
 <ion-header>
   <ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onLoadProjectForm(project)">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+
     <ion-title>
       Project {{ segment }}
     </ion-title>

@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { NavParams, AlertController } from 'ionic-angular';
+import { NavParams, NavController, AlertController, ToastController } from 'ionic-angular';
 
 import { Requirement } from '../../models/requirement';
 import { Task } from '../../models/task';
 import { Recommendation } from '../../models/recommendation';
 
 import { TaskService } from '../../services/task';
-import { RecommendationService } from '../../services/recommendation';
+import { RequirementService } from '../../services/requirement';
+import { RequirementFormPage } from './requirement-form';
 
 
 @Component({
@@ -20,9 +21,11 @@ export class RequirementPage {
 
   constructor(
     private navParams: NavParams,
+    private navCtrl: NavController,
     private alertCtrl: AlertController,
-    private taskService: TaskService,
-    private recommendationService: RecommendationService
+    private toastCtrl: ToastController,
+    private requirementService: RequirementService,
+    private taskService: TaskService
   ) {
     this.requirement = this.navParams.get('requirement');
   }
@@ -30,6 +33,42 @@ export class RequirementPage {
   ionViewDidLoad() {
     this.getTasks();
   }
+
+  onLoadRequirementForm(requirement: Requirement) {
+    if (requirement)
+      this.navCtrl.push(RequirementFormPage, { requirement: requirement, mode: 'Edit' });
+    else
+      this.navCtrl.push(RequirementFormPage, { mode: 'New' });
+  }
+
+  onRemoveRequirement(requirement: Requirement) {
+    const confirm = this.alertCtrl.create({
+      title: 'Confirmation',
+      message: 'Are you sure to delete this requirement?',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {}
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.requirementService.delete(this.requirement.requirementId).subscribe((requirement) => {        
+                this.presentToast('Item deleted successfully!');
+      
+                this.navCtrl.popToRoot()
+            },
+            err => {
+              this.presentToast('Something went wrong!');
+            });
+          }
+        }
+      ]
+    });
+
+    confirm.present();
+  }
+  
 
   getTasks(): Promise<Task[]> {
     return new Promise((resolve, reject) => {
@@ -42,5 +81,14 @@ export class RequirementPage {
         reject();
       })
     });
+  }
+
+  async presentToast(msg: string) {
+    const toast = await this.toastCtrl.create({
+      message: msg,
+      duration: 2400
+    });
+
+    toast.present();
   }
 }

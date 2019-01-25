@@ -6,11 +6,13 @@ import { Category } from '../../models/category';
 import { Requirement } from '../../models/requirement';
 import { Recommendation } from '../../models/recommendation';
 
+import { RequirementPage } from '../requirements/requirement';
+import { ProjectFormPage } from './project-form';
+
 import { CategoryService } from '../../services/category';
 import { RequirementService } from '../../services/requirement';
 import { RecommendationService } from '../../services/recommendation';
 
-import { RequirementPage } from '../requirements/requirement';
 
 @Component({
   templateUrl: 'project.html'
@@ -41,6 +43,10 @@ export class ProjectPage {
     });
   }
 
+  onLoadProjectForm(project: Project) {
+    this.navCtrl.push(ProjectFormPage, { project: project,  mode: 'Edit' });
+  }
+
   getCategories(): Promise<Category[]> {
     return new Promise((resolve, reject) => {
       this.categoryService.GetByProjectId(this.project.projectId).subscribe((categories) => { 
@@ -55,7 +61,7 @@ export class ProjectPage {
 
   getRequirements(): Promise<Requirement[]> {
     return new Promise((resolve, reject) => {
-      this.requirementService.GetByProjectId(this.project.projectId).subscribe((requirements) => { 
+      this.requirementService.getByProjectId(this.project.projectId).subscribe((requirements) => { 
         this.requirements = requirements;
 
         resolve(requirements);
@@ -82,7 +88,7 @@ export class ProjectPage {
   }
 
   public acceptRecommendation(recommendation: Recommendation) {
-    const confirmacao = this.alertCtrl.create({
+    const confirm = this.alertCtrl.create({
       title: 'Confirmation',
       message: 'Are you sure to admit this recommendation?',
       buttons: [
@@ -107,11 +113,11 @@ export class ProjectPage {
       ]
     });
 
-    confirmacao.present();
+    confirm.present();
   }
 
   public rejectRecommendation(recommendation: Recommendation) {
-    const confirmacao = this.alertCtrl.create({
+    const confirm = this.alertCtrl.create({
       title: 'Confirmation',
       message: 'Are you sure to refuse this recommendation?',
       buttons: [
@@ -132,6 +138,6 @@ export class ProjectPage {
       ]
     });
 
-    confirmacao.present();
+    confirm.present();
   }
 }
