@@ -43,6 +43,10 @@ export class RequirementPage {
       this.navCtrl.push(RequirementFormPage, { mode: 'New' });
   }
 
+  onLoadTaskForm(requirement: Requirement) {
+    //this.navCtrl.push(TaskFormPage, { mode: 'New' });
+  }
+
   onRemoveRequirement(requirement: Requirement) {
     const confirm = this.alertCtrl.create({
       title: 'Confirmation',

@@ -1,14 +1,11 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons end>
-      <button ion-button icon-only (click)="onLoadRequirementForm(requirement)">
-        <ion-icon name="create"></ion-icon>
-      </button>
       <button ion-button icon-only (click)="onRemoveRequirement(requirement)">
         <ion-icon name="trash"></ion-icon>
       </button>
-      <button ion-button icon-only (click)="onLoadRequirementForm()">
-        <ion-icon name="add"></ion-icon>
+      <button ion-button icon-only (click)="onLoadRequirementForm(requirement)">
+        <ion-icon name="create"></ion-icon>
       </button>
     </ion-buttons>
     <ion-title>Requirement {{ segment }}</ion-title>
@@ -47,6 +44,10 @@
                                    'bg-red': task.percentageCompleted <= 50 }">
             {{ task.percentageCompleted }}%
           </ion-badge>
+        </button>
+
+        <button color="primary" clear ion-button block (click)="onLoadTaskForm()">
+          <p>Add a New One</p>
         </button>
       </ion-list> 
   </div>

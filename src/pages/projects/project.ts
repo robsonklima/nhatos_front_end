@@ -8,6 +8,7 @@ import { Recommendation } from '../../models/recommendation';
 
 import { RequirementPage } from '../requirements/requirement';
 import { ProjectFormPage } from './project-form';
+import { RequirementFormPage } from '../requirements/requirement-form';
 
 import { ProjectService } from '../../services/project';
 import { CategoryService } from '../../services/category';
@@ -172,6 +173,10 @@ export class ProjectPage {
     });
 
     confirm.present();
+  }
+
+  onLoadRequirementForm() {
+    this.navCtrl.push(RequirementFormPage, { mode: 'New' });
   }
 
   refreshProject(): Promise<Project> {

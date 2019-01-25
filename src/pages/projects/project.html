@@ -87,6 +87,10 @@
           {{ requirement.percentageCompleted }}%
         </ion-badge>
       </button>
+
+      <button color="primary" clear ion-button block (click)="onLoadRequirementForm()">
+        <p>Add a New One</p>
+      </button>
     </ion-list>
 
     <ion-list *ngSwitchCase="'Recommendations'">
@@ -96,8 +100,8 @@
 
       <ion-card *ngFor="let recommendation of recommendations">
         <ion-item>
-          
           <h2>{{ recommendation.projectBName }}</h2>
+
           <p>Distance: {{ recommendation.distance }}</p>
         </ion-item>
       
