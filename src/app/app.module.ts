@@ -14,7 +14,7 @@ import { RequirementPage } from '../pages/requirements/requirement';
 import { CategoriesPage } from '../pages/categories/categories';
 import { ProjectFormPage } from '../pages/projects/project-form';
 import { RequirementFormPage } from '../pages/requirements/requirement-form';
-import { SettingsPage } from '../pages/settings/settings';
+import { SettingsFormPage } from '../pages/settings/settings-form';
 
 import { ProjectService } from '../services/project';
 import { CategoryService } from '../services/category';
@@ -34,7 +34,7 @@ import { TaskFormPage } from '../pages/tasks/task-form';
     ProjectFormPage,
     RequirementFormPage,
     TaskFormPage,
-    SettingsPage
+    SettingsFormPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +52,7 @@ import { TaskFormPage } from '../pages/tasks/task-form';
     ProjectFormPage,
     RequirementFormPage,
     TaskFormPage,
-    SettingsPage
+    SettingsFormPage
   ],
   providers: [
     StatusBar,

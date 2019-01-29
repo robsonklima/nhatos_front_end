@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Settings
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form #f="ngForm" (ngSubmit)="save(f)">
+      <br />
+
+      <ion-list class="inputs">
+        <ion-item>
+          <ion-label>Acceptable distance between project sizes</ion-label>
+  
+          <ion-range name="percentageCompleted"  min="0" max="100" step="1" 
+            pin="true" mode="md" [ngModel]="task?.percentageCompleted">
+          </ion-range>
+        </ion-item>
+      </ion-list>
+
+      <ion-list class="inputs">
+        <ion-item>
+          <ion-label>Acceptable distance between requirements</ion-label>
+  
+          <ion-range name="percentageCompleted"  min="0" max="200" step="1" 
+            pin="true" mode="md" [ngModel]="task?.percentageCompleted">
+          </ion-range>
+        </ion-item>
+      </ion-list>
+
+      <ion-list class="inputs">
+        <ion-item>
+          <ion-label>Only projects of the same size</ion-label>
+          <ion-radio slot="start" value="griff"></ion-radio>
+        </ion-item>
+      </ion-list>
+
+      <ion-list class="inputs">
+        <ion-item>
+          <ion-label>Only projects of the same methodology</ion-label>
+          <ion-radio slot="start" value="griff"></ion-radio>
+        </ion-item>
+      </ion-list>
+
+      <div padding>
+        <button color="primary" ion-button block [disabled]="!f.valid">
+          Save
+        </button>
+      </div>
+    </form>
+</ion-content>

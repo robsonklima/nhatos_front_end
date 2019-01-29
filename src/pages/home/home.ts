@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ProjectsPage } from '../projects/projects';
 import { CategoriesPage } from '../categories/categories';
-import { SettingsPage } from '../settings/settings';
+import { SettingsFormPage } from '../settings/settings-form';
 
 @Component({
   templateUrl: 'home.html'
@@ -21,6 +21,6 @@ export class HomePage {
   }
 
   onLoadSettings() {
-    this.navCtrl.push(SettingsPage);
+    this.navCtrl.push(SettingsFormPage);
   }
 }
