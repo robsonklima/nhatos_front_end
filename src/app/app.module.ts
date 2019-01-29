@@ -14,6 +14,7 @@ import { RequirementPage } from '../pages/requirements/requirement';
 import { CategoriesPage } from '../pages/categories/categories';
 import { ProjectFormPage } from '../pages/projects/project-form';
 import { RequirementFormPage } from '../pages/requirements/requirement-form';
+import { TaskFormPage } from '../pages/tasks/task-form';
 import { SettingsFormPage } from '../pages/settings/settings-form';
 
 import { ProjectService } from '../services/project';
@@ -21,7 +22,7 @@ import { CategoryService } from '../services/category';
 import { RequirementService } from '../services/requirement';
 import { TaskService } from '../services/task';
 import { RecommendationService } from '../services/recommendation';
-import { TaskFormPage } from '../pages/tasks/task-form';
+import { SettingsService } from '../services/settings';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { TaskFormPage } from '../pages/tasks/task-form';
     CategoryService,
     RequirementService,
     TaskService,
-    RecommendationService
+    RecommendationService,
+    SettingsService
   ]
 })
 export class AppModule {}
