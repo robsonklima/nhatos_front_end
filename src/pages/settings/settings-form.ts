@@ -27,9 +27,6 @@ export class SettingsFormPage {
       this.settingsService.getLast().subscribe((settings) => { 
         this.settings = settings;
 
-        console.log(this.settings);
-        
-
         resolve(settings);
       }, e => {
         reject();
