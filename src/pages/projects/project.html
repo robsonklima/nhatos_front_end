@@ -21,16 +21,12 @@
       Info
     </ion-segment-button>
     
-    <ion-segment-button value="Categories">
-      CAT ({{ categories?.length }})
-    </ion-segment-button>
-
     <ion-segment-button value="Requirements">
-      REQ ({{ requirements?.length }})
+      Requirements ({{ requirements?.length }})
     </ion-segment-button>
 
     <ion-segment-button value="Recommendations">
-      REC ({{ recommendations?.length }})
+      Recommend. ({{ recommendations?.length }})
     </ion-segment-button>
   </ion-segment>
   
@@ -39,8 +35,15 @@
       <ion-item text-wrap text-center>
         <h2>{{ project.name }}</h2>
       </ion-item>
+
       <ion-item text-wrap text-justify>
-        <p>Size</p>
+        <p text-center *ngFor="let category of categories">{{ category.name }}</p>
+
+        <p text-center *ngIf="categories.length == 0">Unclassified</p>
+      </ion-item>
+
+      <ion-item text-wrap text-justify>
+        <p >Size</p>
         <h2 item-end>{{ project.size }}</h2>
       </ion-item>
       
@@ -61,17 +64,6 @@
 
       <ion-item text-wrap text-justify>
         <p>{{ project.description }}</p>
-      </ion-item>
-    </ion-list>
-  
-    <ion-list *ngSwitchCase="'Categories'">
-      <ion-item ion-item *ngIf="categories.length == 0">
-          <p text-center>No categories found</p>
-      </ion-item>
-
-      <ion-item ion-item text-wrap *ngFor="let category of categories">
-        <h2>{{ category.name }}</h2>
-        <p>Confidence: {{ category.confidence }}</p>
       </ion-item>
     </ion-list>
 

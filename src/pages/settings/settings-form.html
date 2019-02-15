@@ -12,10 +12,11 @@
 
       <ion-list class="inputs">
         <ion-item>
-          <ion-label>Acceptable distance between project sizes</ion-label>
+          <ion-label>Acceptable distance between project percentage</ion-label>
   
-          <ion-range name="percentageCompleted"  min="0" max="100" step="1" 
-            pin="true" mode="md" [ngModel]="task?.percentageCompleted">
+          <ion-range 
+            name="differenceAcceptedBetweenProjectsPercentage"  min="0" max="100" step="1" 
+            pin="true" mode="md" [ngModel]="settings?.differenceAcceptedBetweenProjectsPercentage">
           </ion-range>
         </ion-item>
       </ion-list>
@@ -24,8 +25,9 @@
         <ion-item>
           <ion-label>Acceptable distance between requirements</ion-label>
   
-          <ion-range name="percentageCompleted"  min="0" max="200" step="1" 
-            pin="true" mode="md" [ngModel]="task?.percentageCompleted">
+          <ion-range 
+            name="distanceAcceptedBetweenRequirements"  min="0" max="200" step="1" 
+            pin="true" mode="md" [ngModel]="settings?.distanceAcceptedBetweenRequirements">
           </ion-range>
         </ion-item>
       </ion-list>
@@ -33,14 +35,20 @@
       <ion-list class="inputs">
         <ion-item>
           <ion-label>Only projects of the same size</ion-label>
-          <ion-radio slot="start" value="griff"></ion-radio>
+          <ion-checkbox 
+            name="onlyProjectsSameSize" 
+            [ngModel]="settings?.onlyProjectsSameSize"
+            [checked]="settings?.onlyProjectsSameSize"></ion-checkbox>
         </ion-item>
       </ion-list>
 
       <ion-list class="inputs">
         <ion-item>
           <ion-label>Only projects of the same methodology</ion-label>
-          <ion-radio slot="start" value="griff"></ion-radio>
+          <ion-checkbox 
+            name="onlyProjectsSameMethodology" 
+            [ngModel]="settings?.onlyProjectsSameMethodology"
+            [checked]="settings?.onlyProjectsSameMethodology"></ion-checkbox>
         </ion-item>
       </ion-list>
 
