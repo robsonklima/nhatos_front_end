@@ -25,7 +25,7 @@ export class SettingsFormPage {
   getSettings(): Promise<Settings> {
     return new Promise((resolve, reject) => {
       this.settingsService.getLast().subscribe((settings) => { 
-        this.settings = settings;
+        this.settings = settings[0];
 
         resolve(settings);
       }, e => {
@@ -55,11 +55,11 @@ export class SettingsFormPage {
     else
     settings.onlyProjectsSameMethodology = 0;
     
-    this.settingsService.post(settings).subscribe((settings) => {
+    this.settingsService.post(settings).subscribe(() => {
       loading.dismiss().then(() => {
-        this.presentToast('Settings updated successfully!');
-
-        this.navCtrl.pop()
+        this.navCtrl.pop().then(() => {
+          this.presentToast('Settings updated successfully!');
+        });
       });
     },
     err => { loading.dismiss(); });

@@ -43,9 +43,19 @@ export class ProjectPage {
     this.refreshProject().then(() => {
       this.getCategories().then(() => {
         this.getRequirements().then(() => {
-          this.getRecommendations();
+          this.getRecommendations().then(() => {
+
+          }).catch(() => {
+  
+          });
+        }).catch(() => {
+
         });
+      }).catch(() => {
+
       });
+    }).catch(() => {
+
     });
   }
 
@@ -72,7 +82,7 @@ export class ProjectPage {
 
         resolve(requirements);
       }, e => {
-        reject();
+        reject(e);
       })
     });
   }
@@ -93,7 +103,7 @@ export class ProjectPage {
     this.navCtrl.push(RequirementPage, { requirement: requirement });
   }
 
-  public acceptRecommendation(recommendation: Recommendation) {
+  public onAcceptRecommendation(recommendation: Recommendation) {
     const confirm = this.alertCtrl.create({
       title: 'Confirmation',
       message: 'Are you sure to admit this recommendation?',
@@ -122,7 +132,7 @@ export class ProjectPage {
     confirm.present();
   }
 
-  public rejectRecommendation(recommendation: Recommendation) {
+  public onRejectRecommendation(recommendation: Recommendation) {
     const confirm = this.alertCtrl.create({
       title: 'Confirmation',
       message: 'Are you sure to refuse this recommendation?',
@@ -160,9 +170,9 @@ export class ProjectPage {
           text: 'Delete',
           handler: () => {
             this.projectService.delete(project.projectId).subscribe(() => {        
-                this.presentToast('Item deleted successfully!');
-      
-                this.navCtrl.pop()
+              this.navCtrl.pop().then(() => {
+                this.presentToast(project.name + ' deleted successfully!');
+              });
             },
             err => {
               this.presentToast('Something went wrong!');
@@ -179,14 +189,16 @@ export class ProjectPage {
     this.navCtrl.push(RequirementFormPage, { mode: 'New' });
   }
 
-  refreshProject(): Promise<Project> {
+  refreshProject(): Promise<Project[]> {
     return new Promise((resolve, reject) => {
-      this.projectService.getById(this.project.projectId).subscribe((project) => { 
-        this.project = project;
+      this.projectService.getById(this.project.projectId).subscribe((projects) => { 
+        this.project = projects[0];
         
-        resolve(project);
-      }, e => {
-        reject();
+        resolve(projects);
+      }, err => {
+        console.log(err)
+
+        reject(err);
       })
     });
   }

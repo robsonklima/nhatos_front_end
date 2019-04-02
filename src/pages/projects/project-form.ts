@@ -46,23 +46,24 @@ export class ProjectFormPage {
     project.methodology = form.value.methodology;
 
     if (this.mode == "New") 
-      this.projectService.post(project).subscribe((project) => {
+      this.projectService.post(project).subscribe(() => {
         loading.dismiss().then(() => {
-          this.presentToast(project.name + ' saved successfully!');
-
-          this.navCtrl.popTo(ProjectsPage)
+          this.navCtrl.popTo(ProjectsPage).then(() => {
+            this.presentToast(project.name + ' saved successfully!');
+          });
         });
       },
       err => { loading.dismiss(); });
     else 
-      this.projectService.put(project).subscribe((project) => {
+      this.projectService.put(project).subscribe(() => {
         loading.dismiss().then(() => {
-          this.presentToast(project.name + ' saved successfully!');
-
-          this.navCtrl.pop()
+          this.navCtrl.pop().then(() => {
+            this.presentToast(project.name + ' saved successfully!');
+          });
         });
       },
-      err => { loading.dismiss(); });
+      err => { loading.dismiss(); console.log(err);
+       });
   }
 
   async presentToast(msg: string) {

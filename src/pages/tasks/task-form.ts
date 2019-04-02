@@ -51,20 +51,20 @@ export class TaskFormPage {
     task.percentageCompleted = form.value.percentageCompleted || 0;
     
     if (this.mode == "New") 
-      this.taskService.post(task).subscribe((task) => {
+      this.taskService.post(task).subscribe(() => {
         loading.dismiss().then(() => {
-          this.presentToast(task.name + ' saved successfully!');
-
-          this.navCtrl.pop()
+          this.navCtrl.pop().then(() => {
+            this.presentToast(task.name + ' saved successfully!');
+          });
         });
       },
       err => { loading.dismiss(); });
     else 
-      this.taskService.put(task).subscribe((task) => {
+      this.taskService.put(task).subscribe(() => {
         loading.dismiss().then(() => {
-          this.presentToast(task.name + ' saved successfully!');
-
-          this.navCtrl.pop()
+          this.navCtrl.pop().then(() => {
+            this.presentToast(task.name + ' saved successfully!');
+          });
         });
       },
       err => { loading.dismiss(); });

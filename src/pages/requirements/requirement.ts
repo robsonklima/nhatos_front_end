@@ -94,10 +94,10 @@ export class RequirementPage {
 
   refreshRequirement(): Promise<Requirement> {
     return new Promise((resolve, reject) => {
-      this.requirementService.getById(this.requirement.requirementId).subscribe((requirement) => { 
-        this.requirement = requirement;
+      this.requirementService.getById(this.requirement.requirementId).subscribe((requirements) => { 
+        this.requirement = requirements[0];
         
-        resolve(requirement);
+        resolve(requirements);
       }, e => {
         reject();
       })

@@ -8,5 +8,5 @@ export class Project {
   percentageCompleted: string;
   size: string;
   methodology: string;
-  recommendationsCount: number;
+  classified: number;
 }

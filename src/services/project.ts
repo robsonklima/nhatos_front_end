@@ -13,10 +13,10 @@ export class ProjectService {
     private http: Http
   ) {}
 
-  getById(projectId: number): Observable<Project> {
+  getById(projectId: number): Observable<Project[]> {
     return this.http.get(Config.API_URL + 'projects/' + projectId)
       .map((res: Response) => res.json())
-      .catch((error: any) => Observable.throw(error.json()));
+      .catch(error => Observable.throw({error: error}));
   }
 
   getAll(): Observable<Project[]> {

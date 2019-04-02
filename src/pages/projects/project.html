@@ -22,11 +22,11 @@
     </ion-segment-button>
     
     <ion-segment-button value="Requirements">
-      Requirements ({{ requirements?.length }})
+      Require ({{ requirements?.length }})
     </ion-segment-button>
 
     <ion-segment-button value="Recommendations">
-      Recommendations ({{ recommendations?.length }})
+      Recommend ({{ recommendations?.length }})
     </ion-segment-button>
   </ion-segment>
   
@@ -39,7 +39,7 @@
       <ion-item text-wrap text-justify>
         <p text-center *ngFor="let category of categories">{{ category.name }}</p>
 
-        <p text-center *ngIf="categories.length == 0">Unclassified</p>
+        <p text-center *ngIf="categories?.length == 0">Unclassified</p>
       </ion-item>
 
       <ion-item text-wrap text-justify>
@@ -116,14 +116,14 @@
           </ion-col>
           
           <ion-col col-4 align-self-center text-center>
-            <button ion-button icon-start small outline color="danger" (click)="rejectRecommendation(recommendation)">
+            <button ion-button icon-start small outline color="danger" (click)="onRejectRecommendation(recommendation)">
               <ion-icon name="close"></ion-icon>
               <div>Refuse</div>
             </button>
           </ion-col>
 
           <ion-col col-4 align-self-center text-center>
-            <button ion-button icon-start small outline color="secondary" (click)="acceptRecommendation(recommendation)">
+            <button ion-button icon-start small outline color="secondary" (click)="onAcceptRecommendation(recommendation)">
               <ion-icon name="checkmark"></ion-icon>
               <div>Admit</div>
             </button>

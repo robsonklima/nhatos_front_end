@@ -63,22 +63,22 @@ export class RequirementFormPage {
     requirement.rat = form.value.rat;
     
     if (this.mode == 'New')
-      this.requirementService.post(requirement).subscribe((requirement) => {
+      this.requirementService.post(requirement).subscribe(() => {
         loading.dismiss().then(() => {
-          this.presentToast(requirement.title + ' saved successfully!');
-
-          this.navCtrl.pop()
+          this.navCtrl.pop().then(() => {
+            this.presentToast(requirement.title + ' saved successfully!');
+          });
         });
       },
       err => {
         loading.dismiss();
       });
     else
-      this.requirementService.put(requirement).subscribe((requirement) => {
+      this.requirementService.put(requirement).subscribe(() => {
         loading.dismiss().then(() => {
-          this.presentToast(requirement.title + ' saved successfully!');
-
-          this.navCtrl.pop();
+          this.navCtrl.pop().then(() => {
+            this.presentToast(requirement.title + ' saved successfully!');
+          });
         });
       },
       err => {
