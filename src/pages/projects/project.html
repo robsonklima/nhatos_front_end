@@ -37,7 +37,7 @@
       </ion-item>
 
       <ion-item text-wrap text-justify>
-        <p text-center *ngFor="let category of categories">{{ category.name }}</p>
+        <p text-center *ngFor="let category of categories">{{ category.title }}</p>
 
         <p text-center *ngIf="categories?.length == 0">Unclassified</p>
       </ion-item>
@@ -104,7 +104,7 @@
           <sup ion-text color="amber">Consider adding this requirement:</sup>
           <p>{{ recommendation.requirementBDescription }}</p>
           <hr />
-          <sup ion-text color="amber">It resembles this:</sup>
+          <sup ion-text color="amber">Recommended based on:</sup>
           <h5 ion-text color="light-dark">{{ recommendation.requirementADescription }}</h5>
         </ion-card-content>
       

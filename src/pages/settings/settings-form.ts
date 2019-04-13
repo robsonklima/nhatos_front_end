@@ -19,7 +19,12 @@ export class SettingsFormPage {
   ) {}
 
   ionViewWillEnter() {
-    this.getSettings();
+    this.getSettings().catch(() => {
+        this.presentToast("An error occured!").then(() => {
+          this.navCtrl.pop();
+        });
+      }      
+    );
   }
 
   getSettings(): Promise<Settings> {

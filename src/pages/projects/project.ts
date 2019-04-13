@@ -67,7 +67,7 @@ export class ProjectPage {
     return new Promise((resolve, reject) => {
       this.categoryService.GetByProjectId(this.project.projectId).subscribe((categories) => { 
         this.categories = categories;
-
+        
         resolve(categories);
       }, e => {
         reject();
