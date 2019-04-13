@@ -15,6 +15,7 @@ import { CategoriesPage } from '../pages/categories/categories';
 import { ProjectFormPage } from '../pages/projects/project-form';
 import { RequirementFormPage } from '../pages/requirements/requirement-form';
 import { TaskFormPage } from '../pages/tasks/task-form';
+import { SettingsListPage } from '../pages/settings/settings-list';
 import { SettingsFormPage } from '../pages/settings/settings-form';
 
 import { ProjectService } from '../services/project';
@@ -35,6 +36,7 @@ import { SettingsService } from '../services/settings';
     ProjectFormPage,
     RequirementFormPage,
     TaskFormPage,
+    SettingsListPage,
     SettingsFormPage
   ],
   imports: [
@@ -53,6 +55,7 @@ import { SettingsService } from '../services/settings';
     ProjectFormPage,
     RequirementFormPage,
     TaskFormPage,
+    SettingsListPage,
     SettingsFormPage
   ],
   providers: [
