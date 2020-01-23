@@ -13,8 +13,8 @@ export class ProjectService {
     private http: Http
   ) {}
 
-  getById(projectId: number): Observable<Project[]> {
-    return this.http.get(Config.API_URL + 'projects/' + projectId)
+  getById(id: number): Observable<Project[]> {
+    return this.http.get(Config.API_URL + 'projects/' + id)
       .map((res: Response) => res.json())
       .catch(error => Observable.throw({error: error}));
   }
@@ -32,13 +32,13 @@ export class ProjectService {
   }
 
   put(project: Project) {
-    return this.http.put(Config.API_URL + 'projects/' + project.projectId, project)
+    return this.http.put(Config.API_URL + 'projects/' + project.id, project)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
 
-  delete(projectId: number) {
-    return this.http.delete(Config.API_URL + 'projects/' + projectId)
+  delete(id: number) {
+    return this.http.delete(Config.API_URL + 'projects/' + id)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }

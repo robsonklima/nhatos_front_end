@@ -1,12 +1,12 @@
 export class Project {
-  projectId: number;
-  name: string;
+  id: number;
+  title: string;
   description: string;
-  categoriesCount: number;
-  requirementsCount: number;
-  tasksCount: number;
-  percentageCompleted: string;
+  descriptionEN: string;
+  deadline: string;
+  code: string;
+  estimatedHours: string;
+  hoursDone: string;
   size: string;
   methodology: string;
-  classified: number;
 }

@@ -54,13 +54,11 @@ export class RequirementFormPage {
     let requirement = new Requirement();
 
     if (this.mode == 'Edit')
-      requirement.requirementId = this.requirement.requirementId
+      requirement.id = this.requirement.id;
 
     requirement.title = form.value.title;
     requirement.description = form.value.description;
-    requirement.projectId = form.value.projectId;
-    requirement.type = form.value.type;
-    requirement.rat = form.value.rat;
+    //requirement.projectId = form.value.projectId;
     
     if (this.mode == 'New')
       this.requirementService.post(requirement).subscribe(() => {

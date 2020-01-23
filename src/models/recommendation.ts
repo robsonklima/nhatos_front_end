@@ -1,15 +1,16 @@
 export class Recommendation {
-  recommendationId: number;
-  requirementAId: number;
-  projectAId: number;
-  projectAName: string;
-  requirementADescription: string;
-  requirementBId: number;
-  projectBId: number;
-  projectBName: string;
-  requirementBDescription: string;
+  id: number;
+  projectId: number;
+  projectTitle: string;
+  projectDescription: string;
+  requirementId: number;
+  requirementTitle: string;
+  requirementDescription: string;
+  riskId: number;
+  baseDate: string;
   distance: number;
-  createdAt: string;
-  createdAtDays: number;
-  accepted: number;
+  sample: number;
+  steps: string;
+  type: string;
+  added: string;
 }

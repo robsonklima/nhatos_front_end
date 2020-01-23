@@ -13,14 +13,14 @@ export class RequirementService {
     private http: Http
   ) {}
 
-  getById(requirementId: number): Observable<Requirement> {
-    return this.http.get(Config.API_URL + 'requirements/' + requirementId)
+  getById(id: number): Observable<Requirement> {
+    return this.http.get(Config.API_URL + 'requirements/' + id)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
 
-  getByProjectId(projectId: number): Observable<Requirement[]> {
-    return this.http.get(Config.API_URL + 'projects/requirements/' + projectId)
+  getByProjectCode(code: string): Observable<Requirement[]> {
+    return this.http.get(Config.API_URL + 'projects/requirements/' + code)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
@@ -32,13 +32,13 @@ export class RequirementService {
   }
 
   put(requirement: Requirement) {
-    return this.http.put(Config.API_URL + 'requirements/' + requirement.requirementId, requirement)
+    return this.http.put(Config.API_URL + 'requirements/' + requirement.id, requirement)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }
 
-  delete(requirementId: number) {
-    return this.http.delete(Config.API_URL + 'requirements/' +requirementId)
+  delete(id: number) {
+    return this.http.delete(Config.API_URL + 'requirements/' + id)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }

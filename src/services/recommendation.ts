@@ -19,8 +19,8 @@ export class RecommendationService {
       .catch((error: any) => Observable.throw(error.json()));
   }
 
-  GetByProjectId(projectId: number): Observable<Recommendation[]> {
-    return this.http.get(Config.API_URL + 'recommendations/projects/' + projectId)
+  GetByProjectId(id: number): Observable<Recommendation[]> {
+    return this.http.get(Config.API_URL + 'recommendations/projects/' + id)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json()));
   }

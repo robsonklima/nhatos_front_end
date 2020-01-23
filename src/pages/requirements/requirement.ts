@@ -64,7 +64,7 @@ export class RequirementPage {
         {
           text: 'Delete',
           handler: () => {
-            this.requirementService.delete(this.requirement.requirementId).subscribe(() => {        
+            this.requirementService.delete(this.requirement.id).subscribe(() => {        
                 this.presentToast('Item deleted successfully!');
       
                 this.navCtrl.pop()
@@ -82,7 +82,7 @@ export class RequirementPage {
   
   getTasks(): Promise<Task[]> {
     return new Promise((resolve, reject) => {
-      this.taskService.getByRequirementId(this.requirement.requirementId).subscribe((tasks) => { 
+      this.taskService.getByRequirementId(this.requirement.id).subscribe((tasks) => { 
         this.tasks = tasks;
 
         resolve(tasks);
@@ -94,7 +94,7 @@ export class RequirementPage {
 
   refreshRequirement(): Promise<Requirement> {
     return new Promise((resolve, reject) => {
-      this.requirementService.getById(this.requirement.requirementId).subscribe((requirements) => { 
+      this.requirementService.getById(this.requirement.id).subscribe((requirements) => { 
         this.requirement = requirements[0];
         
         resolve(requirements);

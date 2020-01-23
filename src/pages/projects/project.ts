@@ -11,7 +11,6 @@ import { ProjectFormPage } from './project-form';
 import { RequirementFormPage } from '../requirements/requirement-form';
 
 import { ProjectService } from '../../services/project';
-import { CategoryService } from '../../services/category';
 import { RequirementService } from '../../services/requirement';
 import { RecommendationService } from '../../services/recommendation';
 
@@ -32,7 +31,6 @@ export class ProjectPage {
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
     private projectService: ProjectService,
-    private categoryService: CategoryService,
     private requirementService: RequirementService,
     private recommendationService: RecommendationService
   ) {
@@ -41,43 +39,19 @@ export class ProjectPage {
 
   ionViewWillEnter() {
     this.refreshProject().then(() => {
-      this.getCategories().then(() => {
-        this.getRequirements().then(() => {
-          this.getRecommendations().then(() => {
-
-          }).catch(() => {
-  
-          });
-        }).catch(() => {
-
-        });
-      }).catch(() => {
-
-      });
-    }).catch(() => {
-
-    });
+      this.getRequirements().then(() => {
+        this.getRecommendations().then(() => {}).catch(() => {});
+      }).catch(() => {});
+    }).catch(() => {});
   }
 
   onLoadProjectForm(project: Project) {
     this.navCtrl.push(ProjectFormPage, { project: project,  mode: 'Edit' });
   }
 
-  getCategories(): Promise<Category[]> {
-    return new Promise((resolve, reject) => {
-      this.categoryService.GetByProjectId(this.project.projectId).subscribe((categories) => { 
-        this.categories = categories;
-        
-        resolve(categories);
-      }, e => {
-        reject();
-      })
-    });
-  }
-
   getRequirements(): Promise<Requirement[]> {
     return new Promise((resolve, reject) => {
-      this.requirementService.getByProjectId(this.project.projectId).subscribe((requirements) => { 
+      this.requirementService.getByProjectCode(this.project.code).subscribe((requirements) => { 
         this.requirements = requirements;
 
         resolve(requirements);
@@ -89,7 +63,7 @@ export class ProjectPage {
 
   getRecommendations(): Promise<Recommendation[]> {
     return new Promise((resolve, reject) => {
-      this.recommendationService.GetByProjectId(this.project.projectId).subscribe((recommendations) => { 
+      this.recommendationService.GetByProjectId(this.project.id).subscribe((recommendations) => { 
         this.recommendations = recommendations;
 
         resolve(recommendations);
@@ -119,7 +93,7 @@ export class ProjectPage {
         {
           text: 'Accept',
           handler: () => {
-            recommendation.accepted = 1;
+            //recommendation.accepted = 1;
 
             this.recommendationService.Post(recommendation).subscribe((rec) => {
               this.getRecommendations();
@@ -144,7 +118,7 @@ export class ProjectPage {
         {
           text: 'Reject',
           handler: () => {
-            recommendation.accepted = 0;
+            //recommendation.accepted = 0;
 
             this.recommendationService.Post(recommendation).subscribe((r) => {
               this.getRecommendations();
@@ -160,7 +134,7 @@ export class ProjectPage {
   onRemoveProject(project: Project) {
     const confirm = this.alertCtrl.create({
       title: 'Confirmation',
-      message: 'Are you sure to delete the item ' + project.name + '?',
+      message: 'Are you sure to delete the item ' + project.title + '?',
       buttons: [
         {
           text: 'Cancel',
@@ -169,9 +143,9 @@ export class ProjectPage {
         {
           text: 'Delete',
           handler: () => {
-            this.projectService.delete(project.projectId).subscribe(() => {        
+            this.projectService.delete(project.id).subscribe(() => {        
               this.navCtrl.pop().then(() => {
-                this.presentToast(project.name + ' deleted successfully!');
+                this.presentToast(project.title + ' deleted successfully!');
               });
             },
             err => {
@@ -191,7 +165,7 @@ export class ProjectPage {
 
   refreshProject(): Promise<Project[]> {
     return new Promise((resolve, reject) => {
-      this.projectService.getById(this.project.projectId).subscribe((projects) => { 
+      this.projectService.getById(this.project.id).subscribe((projects) => { 
         this.project = projects[0];
         
         resolve(projects);

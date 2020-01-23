@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Settings
+      Specialist Settings
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,13 +9,12 @@
 <ion-content>
   <ion-list>
     <ion-list-header class="first-header">
-      <ion-label>Project</ion-label>
+      <ion-label><b>Projects</b>: Similarity Analysis</ion-label>
     </ion-list-header>
     
     <ion-item>
       <ion-icon name="share" item-left></ion-icon>
       <h2>Area</h2>
-      <p>Weight over the domain area</p>
       <ion-note item-end>
         1.0<span class="note">/1.0</span>
       </ion-note>
@@ -24,7 +23,6 @@
     <ion-item>
       <ion-icon name="funnel" item-left></ion-icon>
       <h2>Size</h2>
-      <p>Weight over size</p>
       <ion-note item-end>
         0.5<span class="note">/1.0</span>
       </ion-note>
@@ -33,7 +31,6 @@
     <ion-item>
       <ion-icon name="hammer" item-left></ion-icon>
       <h2>Methodology</h2>
-      <p>Weight on methodology</p>
       <ion-note item-end>
         0.9<span class="note">/1.0</span>
       </ion-note>
@@ -42,18 +39,26 @@
     <ion-item>
       <ion-icon name="trending-up" item-left></ion-icon>
       <h2>Completion Level</h2>
+      <ion-note item-end>
+        0.7<span class="note">/1.0</span>
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="git-compare" item-left></ion-icon>
+      <h2>Similarity of Projects</h2>
       <p>Minimum acceptable</p>
       <ion-note item-end>
-        70<span class="note">/100</span>
+        0.7<span class="note">/1.0</span>
       </ion-note>
     </ion-item>
 
     <ion-list-header>
-      <ion-label>Requirement</ion-label>
+      <ion-label><b>Requirements</b>: Similarity Analysis</ion-label>
     </ion-list-header>
 
     <ion-item>
-      <ion-icon name="swap" item-left></ion-icon>
+      <ion-icon name="md-walk" item-left></ion-icon>
       <h2>Steps</h2>
       <p>Number of steps to recommend</p>
       <ion-note item-end>
@@ -62,16 +67,16 @@
     </ion-item>
 
     <ion-item>
-      <ion-icon name="swap" item-left></ion-icon>
+      <ion-icon name="quote" item-left></ion-icon>
       <h2>Semantic Distance</h2>
       <p>Minimum acceptable</p>
       <ion-note item-end>
-        70<span class="note">/100%</span>
+        75<span class="note">/100%</span>
       </ion-note>
     </ion-item>
 
     <ion-item>
-      <ion-icon name="swap" item-left></ion-icon>
+      <ion-icon name="md-briefcase" item-left></ion-icon>
       <h2>Project sampling</h2>
       <p>Trainning Size</p>
       <ion-note item-end>

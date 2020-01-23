@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { LoadingController, NavParams, ToastController, NavController, AlertController } from 'ionic-angular';
+import { LoadingController, NavParams, ToastController, 
+  NavController, AlertController } from 'ionic-angular';
 
 import { Task } from '../../models/task';
 import { Requirement } from '../../models/requirement';
@@ -45,7 +46,7 @@ export class TaskFormPage {
       task.requirementId = this.task.requirementId
     }
     else
-      task.requirementId = this.requirement.requirementId;
+      task.requirementId = this.requirement.id;
 
     task.name = form.value.name;
     task.percentageCompleted = form.value.percentageCompleted || 0;

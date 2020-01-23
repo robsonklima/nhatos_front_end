@@ -33,33 +33,11 @@
   <div [ngSwitch]="segment">
     <ion-list *ngSwitchCase="'Info'">
       <ion-item text-wrap text-center>
-        <h2>{{ project.name }}</h2>
+        <h2>{{ project.title }}</h2>
       </ion-item>
 
-      <ion-item text-wrap text-justify>
-        <p text-center *ngFor="let category of categories">{{ category.title }}</p>
-
-        <p text-center *ngIf="categories?.length == 0">Unclassified</p>
-      </ion-item>
-
-      <ion-item text-wrap text-justify>
-        <p >Size</p>
-        <h2 item-end>{{ project.size }}</h2>
-      </ion-item>
-      
-      <ion-item text-wrap *ngIf="project.methodology">
-        <p>Methodology</p>
-        <h2 item-end>{{ project.methodology }}</h2>
-      </ion-item>
-
-      <ion-item text-wrap *ngIf="project.percentageCompleted != 'None'">
-        <p>Percentage Completed</p>
-        <ion-badge item-end
-          [ngClass]="{ 'bg-green': project.percentageCompleted > 90, 
-            'bg-orange': project.percentageCompleted > 50 && project.percentageCompleted <= 90,
-            'bg-red': project.percentageCompleted <= 50 }">
-          {{ project.percentageCompleted }}%
-        </ion-badge>
+      <ion-item text-wrap text-center>
+        {{ project.domain }}
       </ion-item>
 
       <ion-item text-wrap text-justify>
@@ -74,13 +52,6 @@
 
       <button ion-item *ngFor="let requirement of requirements" (click)="onLoadRequirement(requirement)">
         {{ requirement.title }}
-        <ion-badge item-end
-          *ngIf="requirement.percentageCompleted != 'None'"
-          [ngClass]="{ 'bg-green': requirement.percentageCompleted > 90, 
-            'bg-orange': requirement.percentageCompleted > 50 && requirement.percentageCompleted <= 90,
-            'bg-red': requirement.percentageCompleted <= 50 }">
-          {{ requirement.percentageCompleted }}%
-        </ion-badge>
       </button>
 
       <button color="primary" clear ion-button block (click)="onLoadRequirementForm()">
@@ -94,24 +65,27 @@
       </ion-item>
 
       <ion-card *ngFor="let recommendation of recommendations">
-        <ion-item>
-          <h2>{{ recommendation.projectBName }}</h2>
-
-          <p>Distance: {{ recommendation.distance }}</p>
-        </ion-item>
-      
         <ion-card-content>
-          <sup ion-text color="amber">Consider adding this requirement:</sup>
-          <p>{{ recommendation.requirementBDescription }}</p>
-          <hr />
-          <sup ion-text color="amber">Recommended based on:</sup>
-          <h5 ion-text color="light-dark">{{ recommendation.requirementADescription }}</h5>
+          <h2>{{ recommendation.requirementTitle }}</h2>
+          <hr>
+          <p>{{ recommendation.requirementDescription }}</p>
+          
+          <p>
+            Distance: {{ recommendation.distance }} - 
+            Steps: {{ recommendation.steps }} - 
+            Sample: {{ recommendation.sample }}
+          </p>
+      
+          <p> 
+            Project:
+            {{ recommendation.projectTitle }}
+          </p>
         </ion-card-content>
       
         <ion-row>
           <ion-col col-4 align-self-center text-center>
             <ion-note>
-              {{ recommendation.createdAtDays }} days ago
+              
             </ion-note>
           </ion-col>
           

@@ -59,7 +59,7 @@ export class ProjectsPage {
 
       if (val && val.trim() != '') {
         this.projects = this.projects.filter((p) => {
-          return (p.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+          return (p.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
         })
       }
     });

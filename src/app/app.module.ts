@@ -11,7 +11,6 @@ import { HomePage } from '../pages/home/home';
 import { ProjectsPage } from '../pages/projects/projects';
 import { ProjectPage } from '../pages/projects/project';
 import { RequirementPage } from '../pages/requirements/requirement';
-import { CategoriesPage } from '../pages/categories/categories';
 import { ProjectFormPage } from '../pages/projects/project-form';
 import { RequirementFormPage } from '../pages/requirements/requirement-form';
 import { TaskFormPage } from '../pages/tasks/task-form';
@@ -32,7 +31,6 @@ import { SettingsService } from '../services/settings';
     ProjectsPage,
     ProjectPage,
     RequirementPage,
-    CategoriesPage,
     ProjectFormPage,
     RequirementFormPage,
     TaskFormPage,
@@ -51,7 +49,6 @@ import { SettingsService } from '../services/settings';
     ProjectsPage,
     ProjectPage,
     RequirementPage,
-    CategoriesPage,
     ProjectFormPage,
     RequirementFormPage,
     TaskFormPage,

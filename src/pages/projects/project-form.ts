@@ -38,9 +38,9 @@ export class ProjectFormPage {
     let project = new Project();
 
     if (this.mode == 'Edit')
-      project.projectId = this.project.projectId
+      project.id = this.project.id
 
-    project.name = form.value.name;
+    project.title = form.value.title;
     project.description = form.value.description;
     project.size = form.value.size;
     project.methodology = form.value.methodology;
@@ -49,7 +49,7 @@ export class ProjectFormPage {
       this.projectService.post(project).subscribe(() => {
         loading.dismiss().then(() => {
           this.navCtrl.popTo(ProjectsPage).then(() => {
-            this.presentToast(project.name + ' saved successfully!');
+            this.presentToast(project.title + ' saved successfully!');
           });
         });
       },
@@ -58,7 +58,7 @@ export class ProjectFormPage {
       this.projectService.put(project).subscribe(() => {
         loading.dismiss().then(() => {
           this.navCtrl.pop().then(() => {
-            this.presentToast(project.name + ' saved successfully!');
+            this.presentToast(project.title + ' saved successfully!');
           });
         });
       },
