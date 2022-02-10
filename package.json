@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.11",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "npm": "^6.13.6",
     "or": "^0.2.0",
     "rebuild": "^0.1.2",
